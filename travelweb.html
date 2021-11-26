@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/travelweb.css"> <!--Css style sheet with the whole information about the project-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Includes the images for the search button and the social media links-->
+    <title>Neotravel</title>
+    <script src="scripts/travelweb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logocontainer"> <!--Class for the webpage logo-->
+            <img src="images/neotravellogo.png" alt="neotravellogo">
+        </div>
+        <div class="topnav"> <!-- Header navigator with the links to the three main experiences that are also in the map, and the home button to return to the initial page-->
+            <a class="menus" href="#home">Home</a>
+            <a class="menus" onclick=showDubai()>Dubai</a>
+            <a class="menus" onclick=showMonaco()>Monaco</a>
+            <a class="menus" onclick=showDubai()>New York</a>
+        </div>
+        <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
+            <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
+            <button type="button" name="login" id="notLogged2" onclick = "openLoginForm()">Login</button>
+        </div>
+        <div class="requireLoginSection" id="requireLoginSection">
+            <div id="profileimage"><img id="profileimageimg" src="images/dubai.jpeg" alt="profile"></div>
+            <div id="usernamespace"><li></li></div>
+            <div class="topnav" id="menuLogged">
+              <a class="menus" onclick=openMyProfile()>My profile</a>
+              <a class="menus" onclick=openMyExperiences()>My experiences</a>
+              <a class="menus" onclick=openLogout()>Logout</a>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="popup" id="dubai"> <!--Content that replaces the map, search area en explore when dubai point or option in the topnav is clicked-->
+            <button type="button" id="closePop" onclick=closeDubai()>Close</button>
+            <div class="imagepop">
+                <img src="images/dubai.jpeg" alt="dubai">
+            </div>
+            <div class="content" id="content-dubai">
+                <h1>Dubai</h1>    <!-- Information taken from spain.memphistours.com  -->
+                <p>Once a small fishing village in the Persian Gulf, today’s Dubai is one of the most cosmopolitan cities in the world where people of almost 200 different nationalities live together. The Emirati metropolis offers an unforgettable experience to all its visitors. Whether on the banks of the estuary or at the top of the Burj Khalifa, the tallest building in the world, it offers an atmosphere full of possibilities and innovation. With a privileged coastline, beautiful desert and fascinating cityscape, Dubai will stay etched in your memory forever.</p>
+                <p>The city is divided by Dubai Creek, a  salty water gap. North to it, a zone full of spices, fish and gold can be found; while the south is known for its Indian influence. It is one of the metropoli with a higer rate of technological development, having there some of the principal and most incredible construction projects in the world.</p>
+                <p>Dubai is one of the cities with a highest number of visits per month, having lots of point of interest to visit, the most important of them being the Butj Khalifa and the Burj Al Arab. Burj Khalifa is one of the highest buildings in the world with near 830 metres tall. Burj Al Arab is a luxury hotel with a height of 321 metres, being the fourth hotel in the world in height.</p>
+                <br>
+                <div class="photovideos"> <!--section organized in two rows of 5 elements-->
+                    <div class="fivecolumnrow">
+                        <div class="cell">
+                            <img src="images/dubai1.jpg" alt="dubai1">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai2.jpg" alt="dubai2">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai3.jpeg" alt="dubai3">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai4.jpg" alt="dubai4">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai5.jfif" alt="dubai5">
+                        </div>
+                    </div>
+                    <div class="fivecolumnrow">
+                        <div class="cell">
+                            <iframe  src="https://www.youtube.com/embed/IdejM6wCkxA" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe src="https://www.youtube.com/embed/SONsHnfPTG0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe src="https://www.youtube.com/embed/EpSIcpjt4bU" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe  src="https://www.youtube.com/embed/8nRDCOmP4UI" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe  src="https://www.youtube.com/embed/TE2tfavIo3E" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <form class="form" id="loginForm">
+            <h1>Login</h1>
+            <label for="username">Username</label>
+            <input type="text" placeholder ="Introduce username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" placeholder = "Introduce password" name="password" required>
+            <button type = "button" class = "button" onclick=login()>Login</button>
+            <button type = "button" class = "button" onclick="closeLoginForm()">Close</button>
+        </form>
+        <div class="form" id="signupForm">
+            <form id="signup">
+                <fieldset>
+                    <legend>Account information</legend>
+                    <p>Username (*): <input id="username" type="text" name="username" minlength="1" required></p>
+                    <p>Password (*): <input id="password" type="password" name="password" maxlength="8" placeholder="Máx. 8 caracteres" required></p>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Personal information></legend>
+                    <p>Name(*): <input id="name" type="text" name="name" required></p>
+                    <p>Surnames(*): <input id="surname" type="text" name="surname" size="40" placeholder="Write your two surnames" required></p>
+                    <p>Email(*): <input id="email" type="email" name="email" size="40" placeholder="e.g. interfaces@gmail.com"required></p>
+                    <p>Birthdate(*): <input id="date" type="date" name="date" size="20" placeholder="dd/mm/aaaa" required></p>
+                    <p>Interests(*): <select id="interest" name="interests" size="1">
+                        <option>...</option>
+                        <option>Cultural tourism</option>
+                        <option>Eco tourism</option>
+                        <option>Beach tourism</option>
+                        <option>Business tourism</option>
+                        <option>Exotic tourism</option>
+                    </select></p>
+                    <p>Photo(*): <select id="photito" name="photito" size="1">
+                        <option>...</option>
+                        <option>images/dubai.jpeg</option>
+                        <option>images/monaco.jpg</option>
+                        <option>images/worldmap.jpg</option>
+                        <option>images/newyork.jpg</option>
+                    </select></p>
+                </fieldset>
+
+                <label><input type="checkbox" id="terms" required>I have read and accepted the Terms of Use (*)</label>
+                <p>
+                    <button id="guardar" type="button" onclick=signup()> Submit </button>
+                    <button id="borrar" type="reset" onclick=deleteFormInfo()> Delete </button>
+                    <button id="close" type="button" onclick=closeSignupForm()> Close </button>
+                </p>
+              </form>
+            </div>
+            <div class="popup" id="newyork"><!--Content that replaces the map, search area en explore when new york point or option in the topnav is clicked-->
+                <button type="button" id = "closepop" onclick=closeNewyork()>Close</button>
+                <div class="imagepop">
+                    <img src="images/newyork.jpg" alt="newyork">
+                </div>
+                <div class="content" id="content-newyork">
+                    <h1>New York, the city that never sleeps</h1> <!--Information taken from nuevayork.net-->
+                    <p>For those loving luxe, New York city has an undenyable charm. The most demanding travelers are attracted for the experiences that this city offers, full of exclusivity and personalized attention. New York is known by its historic hotels, restarurants and social events that mix people all over the world.</p>
+                    <p>New York has become in the past few years in the economical and cultural capital of the world. The city offers unique environment and life style that must be experienced first hand. Attend to a musical in Broadway, spend the night in Times Square, cross Brooklyn's bridge, go shopping in the Fifth Avenue or feeling like a broker in Wall Street are some of the things that can only be lived in New York</p>
+                    <p>The city is made up of five districts called officially Boroughs: Manhanttan, Brooklyn, Queens, Bronx and Staten Island. Manhattan is the most famous district in New York, being the most visited neighborhood and concentrates the 90% of New York's turistic attractions: Empire State building, Rockefeller Center, Chrysler Building, Times Square, Museum of Modern Art and Central Park... Brooklyn is the second most known district and the most populated one, being the born place of many famous artists and sportsmen like Barbra Streisand, Eddie Murphy, Cyndi Lauper, Jennifer Connelly, Woody Allen, Michael Jordan and Mike Tyson.</p>
+                    <br>
+                    <div class="photovideos"><!--section organized in two rows of 5 elements-->
+                        <div class="fivecolumnrow"><!--Cells created for each image-->
+                            <div class="cell">
+                                <img src="images/newyork1.jpg" alt="newyork1">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork2.jfif" alt="newyork2">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork3.jfif" alt="newyork3">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork4.jpg" alt="newyork4">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork5.jpg" alt="newyork5">
+                            </div>
+                        </div>
+                        <div class="fivecolumnrow"><!--Cells created for each youtube video-->
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/FjU_x1106pg" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/ZyyEMrdwuWM" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/6UT3yCsMPCc" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/1D3LterqMQk" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/jtMIljn7AUM" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popup" id="monaco"><!--Content that replaces the map, search area en explore when monaco point or option in the topnav is clicked-->
+                <button type="button" id ="clospop" onclick=closeMonaco()>Close</button>
+                <div class="imagepop">
+                    <img src="images/monaco.jpg" alt="monaco">
+                </div>
+                <div class="content" id="content-monaco">
+                    <h1>Monaco</h1><!--Information taken from la-provenza.es-->
+                    <p>The principality of Monaco is one of the smallest countries in the planet, with only 2 km2, and being formed by only one city. It is in the Côte d'Azur, between Cap-d'Ail, Beausoleil, La turbie et Roquebrune-Cap-Martin, near Niza. It is the residence of numerous tennis players, Formula 1 drivers and footballers; and mixes people of more than 125 nationalities. Its climate is particularly pleasant, with soft winters and summers with not much high temperatures, making this country-city a very important nucleus in the tourist sector, specially the luxury one.</p>
+                    <p>This exclusive ambient is supported by numerous activities and events known worldwide as the Formula 1 Grand Prix (that is run in its streets), Montecarlos's Tennis Masters and the rally. Also, we can add other institutions as the great casino of Montecarlo, the oceanographic museum and the Prince's Palace, not forgetting about the Alps' ski statins that are less than an hour from Monaco.</p>
+                    <p>Nearly a third of the residents of Monaco are millionaires and it is in the list of the 10 countries with the highest PIB per inhabitant, being accompannied by a high privacy and security, excellent international schools and its privileged location near other financial centers. It is being expanded towards the sea, creating a new neighbourhood full of luxury homes near the casino, including hills, a seafront and a sport harbour. This new residencial place follows the same philosophy from the rest of the city, ensuring the maximum comfort, privacy and security to its neigbors, while maintaining the exclusivity and the luxe.</p>
+                    <br>
+                    <div class=photovideos><!--section organized in two rows of 5 elements-->
+                        <div class="fivecolumnrow"><!--Cells created for each image-->
+                            <div class="cell">
+                                <img src="images/monaco1.jpg" alt="monaco1">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco2.jpg" alt="monaco2">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco3.jfif" alt="monaco3">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco4.jpg" alt="monaco4">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco5.jpg" alt="monaco5">
+                            </div>
+                        </div>
+                        <div class="fivecolumnrow"> <!--Cells created for each youtube video-->
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/KbzdAfIR-rE" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/vKdTRNMKQJY" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/ij6xccYYIuE" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/fH2SjUx0BGU" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/QND7bEk14-M" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="requLogin" id="myProfile">
+            <button type="button" onclick=closeMyProfile()>Close</button>
+            <button type="button" onclick=openChangeUsername()>Change username</button>
+            <button type="button" onclick=openChangeInterest()>Change interest</button>
+            <button type="button" onclick=openChangeProfileImage()>Change profile image</button>
+            <h1>My profile</h1>
+            <h2>Username:</h2>
+            <div id="usernameprof"></div>
+            <h2>Password:</h2>
+            <div id="passwordprof"></div>
+            <h2>Name: </h2>
+            <div id="nameprof"></div>
+            <h2>Surnames:</h2>
+            <div id="surnameprof"></div>
+            <h2>Email: </h2>
+            <div id="emailprof"></div>
+            <h2>Birthdate:</h2>
+            <div id="birthprof"></div>
+            <h2>Interests: </h2>
+            <div id="interestprof"></div>
+            <h2>Photo: </h2>
+            <div id="photoprof"><img src="images/dubai.jpeg" alt="profilePhoto" id="profilephotoprof"></div>
+        </div>
+        <div class="profilepopup" id="changeUsername">
+            <h1>Introduce new username</h1>
+            <form id="userchange">
+                <fieldset> <input type="text" placeholder ="Introduce username" name="username" required></fieldset>
+            </form>
+            <button type="button" onclick=changeUsername()>Confirm</button>
+            <button type="button" onclick=closeChangeUsername()>Cancel</button>
+        </div>
+        <div class="profilepopup" id="changeProfileImage">
+            <h1>Select new profile image</h1>
+            <form id="imageprofchange">
+                <fieldset><select id="photito" name="photito" size="1">
+                    <option>...</option>
+                    <option>images/dubai.jpeg</option>
+                    <option>images/monaco.jpg</option>
+                    <option>images/worldmap.jpg</option>
+                    <option>images/newyork.jpg</option>
+                </select>
+            </fieldset>
+            </form>
+            <button type="button" onclick=changeProfileImage()>Confirm</button>
+            <button type="button" onclick=closeChangeProfileImage()>Cancel</button>
+        </div>
+        <div class="profilepopup" id="changeInterest">
+            <h1>Select new interest</h1>
+            <form id="intchange">
+                <fieldset><select id="interest" name="interests" size="1">
+                    <option>...</option>
+                    <option>Cultural tourism</option>
+                    <option>Eco tourism</option>
+                    <option>Beach tourism</option>
+                    <option>Business tourism</option>
+                    <option>Exotic tourism</option>
+                </select>
+            </fieldset>
+            </form>
+            <button type="button" onclick=changeInterest()>Confirm</button>
+            <button type="button" onclick=closeChangeInterest()>Cancel</button>
+        </div>
+        <div class="requLogin" id="myExperiences">
+            <button type="button" onclick=closeMyExperiences()>Close</button>
+            <button type="button" id="addexpbut" onclick=openAddExperience()>Add new experience</button>
+            <ul class="row"> <!--Experiences organized by rows-->
+                <li class="experiencecard" id="sortable1">
+                    <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showNewyork()>
+                    <h2>Dubai</h2>
+                    <p class="description">An Oasis in the middle of the dessert</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable2">
+                    <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showNewyork()>
+                    <h2>Monaco</h2>
+                    <p class="description">Casinos, yachts and automobiles</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable3">
+                    <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                    <h2>New York</h2>
+                    <p class="description">The city that never sleeps</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecell" id="sortable4">
+                    <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Moscow</h2>
+                    <p class="description">City of parks and hospitality</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable5">
+                    <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Paris</h2>
+                    <p class="description">City of light</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable6">
+                    <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>San Francisco</h2>
+                    <p class="description">Modern vs victorian architecture</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecell" id="sortable7">
+                    <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Tokyo</h2>
+                    <p class="description">Cyberpunk in real life</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable8">
+                    <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Madrid</h2>
+                    <p class="description">Charming medieval city</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <ul class="experiencecard" id="sortable9">
+                    <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Sydney</h2>
+                    <p class="description">Luxury near the wild</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+        </div>
+        <div class="popup" id="popupAddExperience">
+            <form id="addForm">
+                <fieldset>
+                    <p>Title(*): <input id="title" type="text" name="title" required></p>
+                    <p>Description(*): <input id="description" type="text" name="description" size="40" placeholder="Describe the experience" required></p>
+                    <p>Photo(*): <select id="photoexp" name="photoexp" size="1">
+                        <option>...</option>
+                        <option>images/dubaimobile.jpg</option>
+                        <option>images/moscowmobile.jpg</option>
+                        <option>images/newyorkmobile.jpg</option>
+                        <option>images/tokyomobile.jpg</option>
+                    </select></p>
+                </fieldset>
+            </form>
+            <button type="button" onclick=addExperience()>Add experience</button>
+            <button type="button" onclick=closeAddExperience()>Cancel</button>
+        </div>
+        <div class="requLogin" id="logoutPopup">
+            Are you sure you want to logout?
+            <button type="button" class="lgout" id="yes" onclick=logout()>Confim</button>
+            <button type="button" class="lgout" id="no" onclick=closeLogout()>Cancel</button>
+        </div>
+
+        <div class="maincontent" id="home"> <!--Section for the map, search area and experiences, hidden when clicking one of the experiences of the map or the header navigator bar-->
+            <div class="mapimage">
+                <div class="circle" id="newyorkk"><button type="button" class="mapbut" onclick=showNewyork()></button></div>
+                <div class="circle" id="monacoo"><button type="button" class="mapbut" onclick=showMonaco()></button></div>
+                <div class="circle" id="dubaii"><button type="button" class="mapbut" onclick=showDubai()></button></div>
+            </div>
+            <div class="searcharea"> <!--Not functional search area, to be implemented in future steps-->
+                <h1 class="title">Search area</h1>
+                <div class="searchbar">
+                    <input type="searchbar" id="searchbar" placeholder="Search.." name="Searchbar">
+                    <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" ></i></button> <!--Image for the search button taken from a external source-->
+                </div>
+            </div>
+            <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+                <h1 class="title">Experiences</h1>
+                <br>
+                <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
+                    <li class="experiencecell" id="sortable1">
+                        <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
+                        <h2 onclick=showDubai()>Dubai</h2>
+                        <p class="description">An Oasis in the middle of the dessert</p>
+                    </li>
+                    <li class="experiencecell" id="sortable2">
+                        <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
+                        <h2 onclick=showMonaco()>Monaco</h2>
+                        <p class="description">Casinos, yachts and automobiles</p>
+                    </li>
+                    <li class="experiencecell" id="sortable3">
+                        <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>New York</h2>
+                        <p class="description">The city that never sleeps</p>
+                    </li>
+                </ul>
+                <ul class="row" id="sortablerow2">
+                    <li class="experiencecell" id="sortable4">
+                        <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Moscow</h2>
+                        <p class="description">City of parks and hospitality</p>
+                    </li>
+                    <li class="experiencecell" id="sortable5">
+                        <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Paris</h2>
+                        <p class="description">City of light</p>
+                    </li>
+                    <li class="experiencecell" id="sortable6">
+                        <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>San Francisco</h2>
+                        <p class="description">Modern vs victorian architecture</p>
+                    </li>
+                </ul>
+                <ul class="row" id="sortablerow3">
+                    <li class="experiencecell" id="sortable7">
+                        <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Tokyo</h2>
+                        <p class="description">Cyberpunk in real life</p>
+                    </li>
+                    <li class="experiencecell" id="sortable8">
+                        <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Madrid</h2>
+                        <p class="description">Charming medieval city</p>
+                    </li>
+                    <ul class="experiencecell" id="sortable9">
+                        <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Sydney</h2>
+                        <p class="description">Luxury near the wild</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </main>
+    <br>
+    <footer>
+        <div class="logocontainer"> <!--Class for the webpage logo-->
+            <img src="images/neotravellogo.png" alt="neotravellogo" class="footerimg">
+        </div>
+        <div class="footnav"> <!--Menu implemented  but not redirected to any page, to be implemented in future steps-->
+            <a class="menus" href="#FAQs">FAQs</a>
+            <a class="menus" href="#privacy">Privacy policy</a>
+            <a class="menus" href="#copyright">Copyright</a>
+        </div>
+        <div class="socialmedia"> <!--Social media links, redirected to the main pages as the web site is not yet in the social media. Images are taken from a external source (second stylesheet link in the head of the page)-->
+            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+            <a href="https://twitter.com/home?lang=es" class="fa fa-twitter"></a>
+            <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+            <a href="https://www.instagram.com/?hl=es" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+    <script>
+        $( function() {
+          $( "#sortablerow1, #sortablerow2, #sortablerow3" ).sortable({connectWith: ".row"});
+          $( "#sortablerow1, #sortablerow2, #sortablerow3" ).disableSelection();
+          $( "#connectedsortable" ).sortable();
+          $( "#connectedsortable" ).disableSelection();
+          
+        } );
+    </script>
+</body>
+</html>
