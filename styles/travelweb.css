@@ -31,6 +31,38 @@ p{
 
 /*Header general settings and settings for each of the subparts*/
 
+/*title*/
+span#red{
+    color:rgb(212, 27, 58); 
+}
+
+span#orange{
+    color:rgb(228, 144, 49); 
+}
+
+span#yellow{
+    color:rgb(255, 240, 30); 
+}
+
+span#green{
+    color:rgb(77, 224, 19); 
+}
+
+span#blue{
+    color:rgb(27, 140, 216); 
+}
+
+span#pink{
+    color:rgb(230, 36, 149); 
+}
+
+.logocontainer{
+    border-style: solid;
+    border-color: white;
+    border-radius: 2px;
+    padding: 1%;
+}
+
 button{ /*Personalization of buttons style*/
     background-color: black;
     color:white;
