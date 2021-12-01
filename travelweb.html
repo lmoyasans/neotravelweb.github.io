@@ -16,15 +16,16 @@
         <div class="logocontainer"> <!--Class for the webpage logo-->
             <h1><span id='red'> N </span><span id='orange'>E </span><span id='yellow'>O </span><span id='green'>T </span><span id='blue'>R </span><span id='pink'>A </span><span id='red'>V </span><span id='orange'>E </span><span id='yellow'>L </span></h1>
         </div>
-        <div class="topnav"> <!-- Header navigator with the links to the three main experiences that are also in the map, and the home button to return to the initial page-->
-            <a class="menus" href="#home">Home</a>
-            <a class="menus" onclick=showDubai()>Dubai</a>
-            <a class="menus" onclick=showMonaco()>Monaco</a>
-            <a class="menus" onclick=showDubai()>New York</a>
-        </div>
-        <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
-            <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
-            <button type="button" name="login" id="notLogged2" onclick = "openLoginForm()">Login</button>
+        <div class="nav-bar">
+            <div class="topnav"> <!-- Header navigator -->
+                <a class="menus" href="#home">Home</a>
+                <a class="menus" href="#contact">Contact</a>
+                <a class="menus" href="#new">New</a>
+            </div>
+            <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
+                <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
+                <button type="button" name="login" id="notLogged2" onclick = "openLoginForm()">Login</button>
+            </div>
         </div>
         <div class="requireLoginSection" id="requireLoginSection">
             <div id="profileimage"><img id="profileimageimg" src="images/dubai.jpeg" alt="profile"></div>
