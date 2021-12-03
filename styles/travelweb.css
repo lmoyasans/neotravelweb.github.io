@@ -214,6 +214,34 @@ header img {
   background-color: transparent;
 }
 
+.hamburger-menu
+{
+  height: 100%;
+  float: left;
+  display:block;
+}
+
+#hamburguer-img{
+  width:5vw;
+  height:5vw;
+}
+
+.drop-down
+{
+  /*Set a high z-index so that the drop-down menu is presented above the rest of the content*/
+  z-index: 100;
+  margin-left: 3%;
+  position: absolute;
+  background-color: black;
+  top: 140px;
+  display: none;
+}
+
+.hamburguer-menu:hover .drop-down{
+  max-height: 50vh;
+  display: block;
+}
+
 #newyorkk{
   margin-left: 28.5rem;
   top: 25.5rem;

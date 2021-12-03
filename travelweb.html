@@ -13,6 +13,13 @@
 </head>
 <body>
     <header>
+        <div class=hamburguer-menu>
+            <img id="hamburguer-img" src="images/menu.png" alt="hamburguer-menu-img">
+            <div class="drop-down">
+                <a href="#home">Home</a><br>
+                <a onclick=showDubai()>Dubai</a><br>
+              </div>
+        </div>
         <div class="logocontainer"> <!--Class for the webpage logo-->
             <img src="images/neotravellogo.png" alt="neotravellogo">
         </div>
@@ -20,7 +27,7 @@
             <a class="menus" href="#home">Home</a>
             <a class="menus" onclick=showDubai()>Dubai</a>
             <a class="menus" onclick=showMonaco()>Monaco</a>
-            <a class="menus" onclick=showDubai()>New York</a>
+            <a class="menus" onclick=showNewYork()>New York</a>
         </div>
         <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
             <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
