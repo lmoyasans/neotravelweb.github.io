@@ -1,382 +1,493 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Big Data Course</title>
-    <link rel="stylesheet" href="style/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  </head>
-  <body>
-    <div class="header">
-      <div class="title">
-        <div class="hamburger-menu">
-          <img class="logo_img" src="images/logo.jpg" alt="Logo"/>
-            <div class="drop-down">
-              <a href="#course-contents">Contents</a><br>
-              <a href="#students">Students</a><br>
-              <a href="#forum">Forum</a><br>
-              <a href="#grades">Grades</a><br>
-              <a href="#login">Login</a><br>
-              <a href="#login">Sign up</a><br>
-              <a href="#language">Language</a>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/travelweb.css"> <!--Css style sheet with the whole information about the project-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Includes the images for the search button and the social media links-->
+    <title>Neotravel</title>
+    <script src="scripts/travelweb.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="logocontainer"> <!--Class for the webpage logo-->
+            <img src="images/neotravellogo.png" alt="neotravellogo">
+        </div>
+        <div class="topnav"> <!-- Header navigator with the links to the three main experiences that are also in the map, and the home button to return to the initial page-->
+            <a class="menus" href="#home">Home</a>
+            <a class="menus" onclick=showDubai()>Dubai</a>
+            <a class="menus" onclick=showMonaco()>Monaco</a>
+            <a class="menus" onclick=showDubai()>New York</a>
+        </div>
+        <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
+            <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
+            <button type="button" name="login" id="notLogged2" onclick = "openLoginForm()">Login</button>
+        </div>
+        <div class="requireLoginSection" id="requireLoginSection">
+            <div id="profileimage"><img id="profileimageimg" src="images/dubai.jpeg" alt="profile"></div>
+            <div id="usernamespace"><li></li></div>
+            <div class="topnav" id="menuLogged">
+              <a class="menus" onclick=openMyProfile()>My profile</a>
+              <a class="menus" onclick=openMyExperiences()>My experiences</a>
+              <a class="menus" onclick=openLogout()>Logout</a>
             </div>
-          </div>
-          <img class="title_img" src="images/title.png" alt="Big Data"/>
         </div>
-        <div class="menu">
-          <img class="menu_logo" src="images/login.png" alt="login"/>
-          <a href="#login">Login</a>
-          <img class="menu_logo" src="images/signup.png" alt="sign up"/>
-          <a href="#login">Sign up</a>
-          <img class="menu_logo" src="images/language.png" alt="language"/>
-          <a href="#language">Language</a>
+    </header>
+    <main>
+        <div class="popup" id="dubai"> <!--Content that replaces the map, search area en explore when dubai point or option in the topnav is clicked-->
+            <button type="button" id="closePop" onclick=closeDubai()>Close</button>
+            <div class="imagepop">
+                <img src="images/dubai.jpeg" alt="dubai">
+            </div>
+            <div class="content" id="content-dubai">
+                <h1>Dubai</h1>    <!-- Information taken from spain.memphistours.com  -->
+                <p>Once a small fishing village in the Persian Gulf, today’s Dubai is one of the most cosmopolitan cities in the world where people of almost 200 different nationalities live together. The Emirati metropolis offers an unforgettable experience to all its visitors. Whether on the banks of the estuary or at the top of the Burj Khalifa, the tallest building in the world, it offers an atmosphere full of possibilities and innovation. With a privileged coastline, beautiful desert and fascinating cityscape, Dubai will stay etched in your memory forever.</p>
+                <p>The city is divided by Dubai Creek, a  salty water gap. North to it, a zone full of spices, fish and gold can be found; while the south is known for its Indian influence. It is one of the metropoli with a higer rate of technological development, having there some of the principal and most incredible construction projects in the world.</p>
+                <p>Dubai is one of the cities with a highest number of visits per month, having lots of point of interest to visit, the most important of them being the Butj Khalifa and the Burj Al Arab. Burj Khalifa is one of the highest buildings in the world with near 830 metres tall. Burj Al Arab is a luxury hotel with a height of 321 metres, being the fourth hotel in the world in height.</p>
+                <br>
+                <div class="photovideos"> <!--section organized in two rows of 5 elements-->
+                    <div class="fivecolumnrow">
+                        <div class="cell">
+                            <img src="images/dubai1.jpg" alt="dubai1">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai2.jpg" alt="dubai2">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai3.jpeg" alt="dubai3">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai4.jpg" alt="dubai4">
+                        </div>
+                        <div class="cell">
+                            <img src="images/dubai5.jfif" alt="dubai5">
+                        </div>
+                    </div>
+                    <div class="fivecolumnrow">
+                        <div class="cell">
+                            <iframe  src="https://www.youtube.com/embed/IdejM6wCkxA" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe src="https://www.youtube.com/embed/SONsHnfPTG0" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe src="https://www.youtube.com/embed/EpSIcpjt4bU" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe  src="https://www.youtube.com/embed/8nRDCOmP4UI" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        <div class="cell">
+                            <iframe  src="https://www.youtube.com/embed/TE2tfavIo3E" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-3 col-s-3 left">
-          <h2>Course</h2>
-          <a href="#course-contents">Contents</a><br>
-          <a href="#students">Students</a><br>
-          <a href="#forum">Forum</a><br>
-          <a href="#grades">Grades</a><br>
-          <div class="left-menu">
-            <a href="#login">Login</a><br>
-            <a href="#login">Sign up</a><br>
-            <a href="#language">Language</a><br>
-          </div>
-        </div>
-        
-        <div class="col-6 col-s-6 center" id="course-contents">
-          <h1>Topic 1: Introduction to Big Data</h1>
-          <img class="topic_img" src="images/topic_1.jpeg"  alt="Topic 1"/>
-          <p></p>
-          <div class="video">
-            <h2 class="video-title">Video 1</h2>
-            <p class="video-description">This video will help you understand what Big Data is, the 5V's of Big Data, why Hadoop came into existence, and what Hadoop is. You will also learn about the storage unit and processing unit of Hadoop, and the implementation of Big Data through use cases. Hadoop is a framework that manages Big Data storage in a distributed way and processes it parallelly. Now, lets deep dive into this video and understand Big Data and Hadoop. </p>
-            <iframe src="https://www.youtube.com/embed/bAyrObl7TYE" allowfullscreen></iframe>
-          </div>
-          <div class="video">
-            <h2 class="video-title">Video 2</h2>
-            <p class="video-description"> You will get an idea about the essential tools that are part of the Hadoop ecosystem. You will learn how Hadoop stores vast volumes of data using HDFS, and processes this data using MapReduce. You will understand how cluster resource management works using YARN. It will make you know how you can query and analyze big data using tools and frameworks like Hive, Pig, Sqoop, and HBase.</p>
-            <iframe src="https://www.youtube.com/embed/5zJt9qAe01w" allowfullscreen></iframe>
-          </div>
-          <div class="video">
-            <h2 class="video-title">Video 3</h2>
-            <p class="video-description">HDFS will teach you how to store big data, and MapReduce will show you how to process this big data. In YARN, you will learn how cluster resource management works. In addition to these components, you will also look into the Hadoop ecosystem, which consists of Hive, Pig, Sqoop, and HBase. You will learn to use these tools both through theory and demos. After this, you will see how Big data is used practically across different sectors.</p>
-            <iframe src="https://www.youtube.com/embed/KcecJfxbd-4" allowfullscreen></iframe>
-          </div>
-          <h1>Topic 2: Introduction to Hadoop</h1>
-          <img class="topic_img" src="images/topic_2.png" alt="Topic 2"/>
-          <p></p>
-          <div class="video">
-            <h2 class="video-title">Video 1</h2>
-            <p class="video-description">This Hadoop tutorial for beginners will help you understand what is Hadoop, why Hadoop, what is Hadoop HDFS, Hadoop MapReduce, Hadoop YARN, a use case of Hadoop and finally a demo on HDFS </p>
-            <iframe src="https://www.youtube.com/embed/M0WMwaYmNNs" allowfullscreen></iframe>
-          </div>
-          <div class="video">
-            <h2 class="video-title">Video 2</h2>
-            <p class="video-description">This Hadoop tutorial will help you understand the different tools present in the Hadoop ecosystem. This Hadoop video will take you through an overview of the important tools of Hadoop ecosystem which include Hadoop HDFS, Hadoop Pig, Hadoop Yarn, Hadoop Hive, Apache Spark, Mahout, Apache Kafka, Storm, Sqoop, Apache Ranger, Oozie and also discuss the architecture of these tools.</p>
-            <iframe src="https://www.youtube.com/embed/0uHpSm1SkX8" allowfullscreen></iframe>
-          </div>
-          <div class="video">
-            <h2 class="video-title">Video 3</h2>
-            <p class="video-description">This Hadoop architecture tutorial will help you understand the architecture of Apache Hadoop in detail. In this video, you will learn what is Hadoop, components of Hadoop, what is HDFS, HDFS architecture, Hadoop MapReduce, Hadoop MapReduce example, Hadoop YARN and finally, a demo on MapReduce.</p>
-            <iframe src="https://www.youtube.com/embed/CI0QkZYsLmw" allowfullscreen></iframe>
-          </div>
-          <h1>Topic 3: Introduction to Microsoft Azure</h1>
-          <img class="topic_img" src="images/topic_3.png" alt="Topic 3"/>
-          <p></p>
-          <div class="video">
-            <h2 class="video-title">Video 1</h2>
-            <p class="video-description">This Azure tutorial video will help you understand why cloud computing is needed, what is cloud computing, what is Azure, Azure services and uses of Azure. Cloud infrastructure is set to dominate the IT space. Microsoft Azure is growing faster than any other cloud services provider with an incredible 154% YOY growth rate.</p>
-            <iframe src="https://www.youtube.com/embed/3Arj5zlUPG4" allowfullscreen></iframe>
-          </div>
-          <div class="video">
-            <h2 class="video-title">Video 2</h2>
-            <p class="video-description">The Azure virtual machine tutorial will cover most of the concepts of Azure virtual machine. Azure is a cloud computing platform and an online portal that allows you to access and manage cloud services and resources provided by Microsoft. In this video, we will be looking into what is Azure, what is Azure virtual machine, benefits of Azure virtual machine and Azure virtual machine components.</p>
-            <iframe src="https://www.youtube.com/embed/QOv_-xBXkpo" allowfullscreen></iframe>
-          </div>
-          <div class="video">
-            <h2 class="video-title">Video 3</h2>
-            <p class="video-description">This Azure tutorial for beginners will help you understand what is cloud computing, what is Microsoft Azure, what are the services Azure offers, why is Azure better, which companies use Azure and you will also see a use case where we utilize some of the Azure cloud services. Cloud computing refers to the method of using the internet to store data, manage data and process data and Microsoft Azure is on such cloud service provider. </p>
-            <iframe src="https://www.youtube.com/embed/oXK2kQOV5Yk" allowfullscreen></iframe>
-          </div>
-        </div>
+        <form class="form" id="loginForm">
+            <h1>Login</h1>
+            <label for="username">Username</label>
+            <input type="text" placeholder ="Introduce username" name="username" required>
+            <label for="password">Password</label>
+            <input type="password" placeholder = "Introduce password" name="password" required>
+            <button type = "button" class = "button" onclick=login()>Login</button>
+            <button type = "button" class = "button" onclick="closeLoginForm()">Close</button>
+        </form>
+        <div class="form" id="signupForm">
+            <form id="signup">
+                <fieldset>
+                    <legend>Account information</legend>
+                    <p>Username (*): <input id="username" type="text" name="username" minlength="1" required></p>
+                    <p>Password (*): <input id="password" type="password" name="password" maxlength="8" placeholder="Máx. 8 caracteres" required></p>
+                </fieldset>
 
-        <div class="col-6 col-s-6 center" id="students">
-          <div>
-            <img class="student_img" src="images/student_1.jpg"  alt="Student 1"/>
-            <h2>Cathie</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Woods</h2>
-            <h3>cathmaderas@gmail.com</h3>
-          </div>
-          <div>
-            <img class="student_img" src="images/student_2.jpg" alt="Student 2"/>
-            <h2>Warren</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Buffett</h2>
-            <h3>valueinvesting@gmail.com</h3>
-          </div>
-          <div>
-            <img class="student_img" src="images/student_3.jpg" alt="Student 3"/>
-            <h2>Evelyn </h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Jackson</h2>
-            <h3>evejack@gmail.com</h3>    
-          </div>
-          <div>
-            <img class="student_img" src="images/student_4.jpg" alt="Student 4"/>
-            <h2>Joe</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Biden</h2>
-            <h3>sleepyjoe@gmail.com</h3>  
-          </div>
-          <div>
-            <img class="student_img" src="images/student_5.jpg" alt="Student 5"/>
-            <h2>Hillary</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Clinton</h2>
-            <h3>ladyclinton@gmail.com</h3>
-          </div>
-          <div>
-            <img class="student_img" src="images/student_10.jpg" alt="Student 6"/>
-            <h2>Samantha</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Jhonson</h2>
-            <h3>jhonsonsam@gmail.com</h3> 
-          </div>
-          <div>
-            <img class="student_img" src="images/student_7.jpg" alt="Student 7"/>
-            <h2>Donald</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Trump</h2>
-            <h3>americafirst@gmail.com</h3>
-          </div>
-          <div>
-            <img class="student_img" src="images/student_6.jpg" alt="Student 8"/>
-            <h2>Barack</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Obama</h2>
-            <h3>nowecant@gmail.com</h3>
-          </div>
-          <div>
-            <img class="student_img" src="images/student_9.jpg" alt="Student 9"/>
-            <h2>Emma</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Stone</h2>
-            <h3>wannaoscar@gmail.com</h3>  
-          </div>
-          <div>
-            <img class="student_img" src="images/student_8.jpg" alt="Student 10"/>
-            <h2>Ronald</h2>
-            <img class="send_mail_icon" src="images/sendmsg.jpg" alt="SendMsg button"/>
-            <h2>Reagan</h2>
-            <h3>antiurss@gmail.com</h3>
-          </div>
-        </div>
-        <div class="col-6 col-s-6 center" id="grades">
-          <table id="t01">
-            <tr>
-              <th>Student</th>
-              <th>Activity 1</th> 
-              <th>Activity 2</th>
-              <th>Activity 3</th>
-            </tr>
-            <tr>
-              <td>Warren Buffet</td>
-              <td>2.5</td>
-              <td>5.0</td>
-              <td>5.3</td>
-            </tr>
-            <tr>
-              <td>Evelyn Jackson</td>
-              <td>7.8</td>
-              <td>9.4</td>
-              <td>9.4</td>
-            </tr>
-            <tr>
-              <td>Joe Biden</td>
-              <td>3.3</td>
-              <td>8.0</td>
-              <td>2.4</td>
-              </tr>
-            <tr>
-              <td>Donald Trump</td>
-              <td>0.1</td>
-              <td>2.4</td>
-              <td>3.5</td>
-            </tr>
-            <tr>
-              <td>Cathie Woods</td>
-              <td>10.0</td>
-              <td>10.0</td>
-              <td>9.4</td>
-            </tr>
-            <tr>
-              <td>Hillary Clinton</td>
-              <td>10.0</td>
-              <td>8.3</td>
-              <td>4.4</td>
-            </tr>
-            <tr>
-              <td>Samantha Jhonson</td>
-              <td>7.2</td>
-              <td>2.4</td>
-              <td>9.4</td>
-            </tr>
-            <tr>
-              <td>Barack Obama</td>
-              <td>4.7</td>
-              <td>0.7</td>
-              <td>9.1</td>
-            </tr>
-            <tr>
-              <td>Ronald Reagan</td>
-              <td>7.5</td>
-              <td>9.8</td>
-              <td>9.2</td>
-            </tr>
-            <tr>
-              <td>Emma Stone</td>
-              <td>1.1</td>
-              <td>8.7</td>
-              <td>5.0</td>
-            </tr>
-          </table>
-        </div>
-        <div class="col-6 col-s-6 center newsbox" id="forum">
-          <div class="newsbox">
-            <div class="newsbox_header">
-              <!-- News Title -->
-              <h2>Doubt about instalation</h2>
-              <!-- News Date -->
-              <strong>09/28/2020</strong>
-              <input class="forum-reply-button" type="submit" name="reply" value="Reply" />
-              <div class="clearthis">&nbsp;</div>
-            </div>
-            <div class="newsbox_content">
-              <!-- News Text -->
-              <p> Hello, I don't know why my instalition is not done properly. I have a Mac with IOS-12. <br>
-              <a>More...</a> </p>
-            </div>
-          </div>
-          <div class="newsbox">
-            <div class="newsbox_header">
-              <!-- News Title -->
-              <h2>Contents in test #4</h2>
-              <!-- News Date -->
-              <strong>09/27/2020</strong>
-              <input class="forum-reply-button" type="submit" name="reply" value="Reply" />
-              <div class="clearthis">&nbsp;</div>
-            </div>
-            <div class="newsbox_content">
-              <!-- News Text -->
-              <p> Hello, could you please tell us which contents will be covered in the next test of next friday. Thank you <br>
-              <a>More...</a> </p>
-            </div>
-          </div>
-          <div class="newsbox">
-            <div class="newsbox_header">
-              <!-- News Title -->
-              <h2>Need a team for practical lab cases</h2>
-              <!-- News Date -->
-              <strong>09/25/2020</strong>
-              <input class="forum-reply-button" type="submit" name="reply" value="Reply" />
-              <div class="clearthis">&nbsp;</div>
-            </div>
-            <div class="newsbox_content">
-              <!-- News Text -->
-              <p> Hello, I'm looking for a team for practical lab cases. Currently, I'm on group 89 of Big data course. Thanks in advance. <br>
-              <a>More...</a> </p>
-            </div>
-          </div>
-          <br><br>
-          <div id="forum-footer">
-            Please don't hesitate to ask for help on the forum. You will get help as soon as possible. You can also use the forum to tell us what you like or dislike and what you would like to see more. <br>
-            <br>
-            Your feedback is very important to us and we will do our best to fulfill your requests.
-          </div>
-        </div>
+                <fieldset>
+                    <legend>Personal information></legend>
+                    <p>Name(*): <input id="name" type="text" name="name" required></p>
+                    <p>Surnames(*): <input id="surname" type="text" name="surname" size="40" placeholder="Write your two surnames" required></p>
+                    <p>Email(*): <input id="email" type="email" name="email" size="40" placeholder="e.g. interfaces@gmail.com"required></p>
+                    <p>Birthdate(*): <input id="date" type="date" name="date" size="20" placeholder="dd/mm/aaaa" required></p>
+                    <p>Interests(*): <select id="interest" name="interests" size="1">
+                        <option>...</option>
+                        <option>Cultural tourism</option>
+                        <option>Eco tourism</option>
+                        <option>Beach tourism</option>
+                        <option>Business tourism</option>
+                        <option>Exotic tourism</option>
+                    </select></p>
+                    <p>Photo(*): <select id="photito" name="photito" size="1">
+                        <option>...</option>
+                        <option>images/dubai.jpeg</option>
+                        <option>images/monaco.jpg</option>
+                        <option>images/worldmap.jpg</option>
+                        <option>images/newyork.jpg</option>
+                    </select></p>
+                </fieldset>
 
-        <div class="col-6 col-s-6 center" id="login">
-          <div class="login-box">
-            <h1>Sign up</h1>  
-            <div class="login-left">
-              <input type="text" name="username" placeholder="Username" />
-              <input type="text" name="email" placeholder="E-mail" />
-              <input type="password" name="password" placeholder="Password" />
-              <input type="password" name="password2" placeholder="Retype password" />
+                <label><input type="checkbox" id="terms" required>I have read and accepted the Terms of Use (*)</label>
+                <p>
+                    <button id="guardar" type="button" onclick=signup()> Submit </button>
+                    <button id="borrar" type="reset" onclick=deleteFormInfo()> Delete </button>
+                    <button id="close" type="button" onclick=closeSignupForm()> Close </button>
+                </p>
+              </form>
             </div>
-                
-            <div class="login-right">
-              <span class="loginwith">Sign in with<br />social network</span> 
-              <button class="social-signin facebook">Log in with facebook</button>
-              <button class="social-signin twitter">Log in with Twitter</button>
-              <button class="social-signin google">Log in with Google+</button>
+            <div class="popup" id="newyork"><!--Content that replaces the map, search area en explore when new york point or option in the topnav is clicked-->
+                <button type="button" id = "closepop" onclick=closeNewyork()>Close</button>
+                <div class="imagepop">
+                    <img src="images/newyork.jpg" alt="newyork">
+                </div>
+                <div class="content" id="content-newyork">
+                    <h1>New York, the city that never sleeps</h1> <!--Information taken from nuevayork.net-->
+                    <p>For those loving luxe, New York city has an undenyable charm. The most demanding travelers are attracted for the experiences that this city offers, full of exclusivity and personalized attention. New York is known by its historic hotels, restarurants and social events that mix people all over the world.</p>
+                    <p>New York has become in the past few years in the economical and cultural capital of the world. The city offers unique environment and life style that must be experienced first hand. Attend to a musical in Broadway, spend the night in Times Square, cross Brooklyn's bridge, go shopping in the Fifth Avenue or feeling like a broker in Wall Street are some of the things that can only be lived in New York</p>
+                    <p>The city is made up of five districts called officially Boroughs: Manhanttan, Brooklyn, Queens, Bronx and Staten Island. Manhattan is the most famous district in New York, being the most visited neighborhood and concentrates the 90% of New York's turistic attractions: Empire State building, Rockefeller Center, Chrysler Building, Times Square, Museum of Modern Art and Central Park... Brooklyn is the second most known district and the most populated one, being the born place of many famous artists and sportsmen like Barbra Streisand, Eddie Murphy, Cyndi Lauper, Jennifer Connelly, Woody Allen, Michael Jordan and Mike Tyson.</p>
+                    <br>
+                    <div class="photovideos"><!--section organized in two rows of 5 elements-->
+                        <div class="fivecolumnrow"><!--Cells created for each image-->
+                            <div class="cell">
+                                <img src="images/newyork1.jpg" alt="newyork1">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork2.jfif" alt="newyork2">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork3.jfif" alt="newyork3">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork4.jpg" alt="newyork4">
+                            </div>
+                            <div class="cell">
+                                <img src="images/newyork5.jpg" alt="newyork5">
+                            </div>
+                        </div>
+                        <div class="fivecolumnrow"><!--Cells created for each youtube video-->
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/FjU_x1106pg" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/ZyyEMrdwuWM" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/6UT3yCsMPCc" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/1D3LterqMQk" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/jtMIljn7AUM" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <input class="signup-button" type="submit" name="signup_submit" value="Sign me up" />
-          </div>
+            <div class="popup" id="monaco"><!--Content that replaces the map, search area en explore when monaco point or option in the topnav is clicked-->
+                <button type="button" id ="clospop" onclick=closeMonaco()>Close</button>
+                <div class="imagepop">
+                    <img src="images/monaco.jpg" alt="monaco">
+                </div>
+                <div class="content" id="content-monaco">
+                    <h1>Monaco</h1><!--Information taken from la-provenza.es-->
+                    <p>The principality of Monaco is one of the smallest countries in the planet, with only 2 km2, and being formed by only one city. It is in the Côte d'Azur, between Cap-d'Ail, Beausoleil, La turbie et Roquebrune-Cap-Martin, near Niza. It is the residence of numerous tennis players, Formula 1 drivers and footballers; and mixes people of more than 125 nationalities. Its climate is particularly pleasant, with soft winters and summers with not much high temperatures, making this country-city a very important nucleus in the tourist sector, specially the luxury one.</p>
+                    <p>This exclusive ambient is supported by numerous activities and events known worldwide as the Formula 1 Grand Prix (that is run in its streets), Montecarlos's Tennis Masters and the rally. Also, we can add other institutions as the great casino of Montecarlo, the oceanographic museum and the Prince's Palace, not forgetting about the Alps' ski statins that are less than an hour from Monaco.</p>
+                    <p>Nearly a third of the residents of Monaco are millionaires and it is in the list of the 10 countries with the highest PIB per inhabitant, being accompannied by a high privacy and security, excellent international schools and its privileged location near other financial centers. It is being expanded towards the sea, creating a new neighbourhood full of luxury homes near the casino, including hills, a seafront and a sport harbour. This new residencial place follows the same philosophy from the rest of the city, ensuring the maximum comfort, privacy and security to its neigbors, while maintaining the exclusivity and the luxe.</p>
+                    <br>
+                    <div class=photovideos><!--section organized in two rows of 5 elements-->
+                        <div class="fivecolumnrow"><!--Cells created for each image-->
+                            <div class="cell">
+                                <img src="images/monaco1.jpg" alt="monaco1">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco2.jpg" alt="monaco2">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco3.jfif" alt="monaco3">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco4.jpg" alt="monaco4">
+                            </div>
+                            <div class="cell">
+                                <img src="images/monaco5.jpg" alt="monaco5">
+                            </div>
+                        </div>
+                        <div class="fivecolumnrow"> <!--Cells created for each youtube video-->
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/KbzdAfIR-rE" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/vKdTRNMKQJY" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/ij6xccYYIuE" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/fH2SjUx0BGU" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                            <div class="cell">
+                                <iframe  src="https://www.youtube.com/embed/QND7bEk14-M" title="YouTube video player"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <div class="requLogin" id="myProfile">
+            <button type="button" onclick=closeMyProfile()>Close</button>
+            <button type="button" onclick=openChangeUsername()>Change username</button>
+            <button type="button" onclick=openChangeInterest()>Change interest</button>
+            <button type="button" onclick=openChangeProfileImage()>Change profile image</button>
+            <h1>My profile</h1>
+            <h2>Username:</h2>
+            <div id="usernameprof"></div>
+            <h2>Password:</h2>
+            <div id="passwordprof"></div>
+            <h2>Name: </h2>
+            <div id="nameprof"></div>
+            <h2>Surnames:</h2>
+            <div id="surnameprof"></div>
+            <h2>Email: </h2>
+            <div id="emailprof"></div>
+            <h2>Birthdate:</h2>
+            <div id="birthprof"></div>
+            <h2>Interests: </h2>
+            <div id="interestprof"></div>
+            <h2>Photo: </h2>
+            <div id="photoprof"><img src="images/dubai.jpeg" alt="profilePhoto" id="profilephotoprof"></div>
         </div>
-
-        <div class="col-6 col-s-6 center" id="language">
-          <div class="lang-div">
-            <img class="lang-img" src="images/lang-es.png" alt="español"/>
-            <a>Espa&ntilde;ol</a>
-          </div>
-          <div class="lang-div">
-            <img class="lang-img" src="images/lang-en.png" alt="english"/>
-            <a>English</a>
-          </div>
-          <div class="lang-div">
-            <img class="lang-img" src="images/lang-de.png" alt="deustch"/>
-            <a>Deutsch</a>
-          </div>
-          <div class="lang-div">
-            <img class="lang-img" src="images/lang-fr.png" alt="français"/>
-            <a>Fran&ccedil;ais</a>
-          </div>
-          <div class="lang-div">
-            <img class="lang-img" src="images/lang-it.png" alt="italiano"/>
-            <a>Italiano</a>
-          </div>
+        <div class="profilepopup" id="changeUsername">
+            <h1>Introduce new username</h1>
+            <form id="userchange">
+                <fieldset> <input type="text" placeholder ="Introduce username" name="username" required></fieldset>
+            </form>
+            <button type="button" onclick=changeUsername()>Confirm</button>
+            <button type="button" onclick=closeChangeUsername()>Cancel</button>
         </div>
-      
-        <div class="col-3 col-s-3 right">
-          <div class="aside">
-            <h2>Latest discussions</h2>
-            <img class="discussion_image" src="images/discussions.png" alt="discussions"/>
-            <ul>
-              <li>Tue, 09/01/2020 - New forum post:<br><a>Welcome to the course!</a></li>
-              <li>Fri, 09/25/2020 - New forum post:<br><a href="#forum">Need a team for practical lab cases</a></li>
-              <li>Sun, 09/27/2020 - New forum post:<br><a href="#forum">Contents in test #4</a></li>
-              <li>Mon, 09/28/2020 - New forum post:<br><a href="#forum">Doubt about installation</a></li>
+        <div class="profilepopup" id="changeProfileImage">
+            <h1>Select new profile image</h1>
+            <form id="imageprofchange">
+                <fieldset><select id="photito" name="photito" size="1">
+                    <option>...</option>
+                    <option>images/dubai.jpeg</option>
+                    <option>images/monaco.jpg</option>
+                    <option>images/worldmap.jpg</option>
+                    <option>images/newyork.jpg</option>
+                </select>
+            </fieldset>
+            </form>
+            <button type="button" onclick=changeProfileImage()>Confirm</button>
+            <button type="button" onclick=closeChangeProfileImage()>Cancel</button>
+        </div>
+        <div class="profilepopup" id="changeInterest">
+            <h1>Select new interest</h1>
+            <form id="intchange">
+                <fieldset><select id="interest" name="interests" size="1">
+                    <option>...</option>
+                    <option>Cultural tourism</option>
+                    <option>Eco tourism</option>
+                    <option>Beach tourism</option>
+                    <option>Business tourism</option>
+                    <option>Exotic tourism</option>
+                </select>
+            </fieldset>
+            </form>
+            <button type="button" onclick=changeInterest()>Confirm</button>
+            <button type="button" onclick=closeChangeInterest()>Cancel</button>
+        </div>
+        <div class="requLogin" id="myExperiences">
+            <button type="button" onclick=closeMyExperiences()>Close</button>
+            <button type="button" id="addexpbut" onclick=openAddExperience()>Add new experience</button>
+            <ul class="row"> <!--Experiences organized by rows-->
+                <li class="experiencecard" id="sortable1">
+                    <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showNewyork()>
+                    <h2>Dubai</h2>
+                    <p class="description">An Oasis in the middle of the dessert</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
             </ul>
-            <h2>Calendar</h2>
-            <img class="calendar_image" src="images/calendar.png" alt="calendar"/>
-            <ul>
-              <li>Fri. Oct. 2nd, 2020 - Unit 1 Test</li>
-              <li>Fri. Oct. 9th, 2020 - First assignment due</li>
-              <li>Wed. Oct. 14th, 2020 - Extra theory lesson 15:00 - 17:00</li>
+            <ul class="row">
+                <li class="experiencecard" id="sortable2">
+                    <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showNewyork()>
+                    <h2>Monaco</h2>
+                    <p class="description">Casinos, yachts and automobiles</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
             </ul>
-          </div>
+            <ul class="row">
+                <li class="experiencecard" id="sortable3">
+                    <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                    <h2>New York</h2>
+                    <p class="description">The city that never sleeps</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecell" id="sortable4">
+                    <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Moscow</h2>
+                    <p class="description">City of parks and hospitality</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable5">
+                    <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Paris</h2>
+                    <p class="description">City of light</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable6">
+                    <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>San Francisco</h2>
+                    <p class="description">Modern vs victorian architecture</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecell" id="sortable7">
+                    <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Tokyo</h2>
+                    <p class="description">Cyberpunk in real life</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <li class="experiencecard" id="sortable8">
+                    <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Madrid</h2>
+                    <p class="description">Charming medieval city</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
+            <ul class="row">
+                <ul class="experiencecard" id="sortable9">
+                    <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                    <h2 onclick=showNewyork()>Sydney</h2>
+                    <p class="description">Luxury near the wild</p>
+                    <button type="button" onclick=deleteExperience(this)>Delete</button>
+                </li>
+            </ul>
         </div>
-      </div>
-        
-      <div class="footer">
-        <div class="copyright">
-          <a>&copy; 2020</a>
+        <div class="popup" id="popupAddExperience">
+            <form id="addForm">
+                <fieldset>
+                    <p>Title(*): <input id="title" type="text" name="title" required></p>
+                    <p>Description(*): <input id="description" type="text" name="description" size="40" placeholder="Describe the experience" required></p>
+                    <p>Photo(*): <select id="photoexp" name="photoexp" size="1">
+                        <option>...</option>
+                        <option>images/dubaimobile.jpg</option>
+                        <option>images/moscowmobile.jpg</option>
+                        <option>images/newyorkmobile.jpg</option>
+                        <option>images/tokyomobile.jpg</option>
+                    </select></p>
+                </fieldset>
+            </form>
+            <button type="button" onclick=addExperience()>Add experience</button>
+            <button type="button" onclick=closeAddExperience()>Cancel</button>
         </div>
-        <div class="vl">
+        <div class="requLogin" id="logoutPopup">
+            Are you sure you want to logout?
+            <button type="button" class="lgout" id="yes" onclick=logout()>Confim</button>
+            <button type="button" class="lgout" id="no" onclick=closeLogout()>Cancel</button>
         </div>
-        <div class="support">
-          <a>Contact</a><br>
-          <a>Help</a>
+
+        <div class="maincontent" id="home"> <!--Section for the map, search area and experiences, hidden when clicking one of the experiences of the map or the header navigator bar-->
+            <div class="mapimage">
+                <div class="circle" id="newyorkk"><button type="button" class="mapbut" onclick=showNewyork()></button></div>
+                <div class="circle" id="monacoo"><button type="button" class="mapbut" onclick=showMonaco()></button></div>
+                <div class="circle" id="dubaii"><button type="button" class="mapbut" onclick=showDubai()></button></div>
+            </div>
+            <div class="searcharea"> <!--Not functional search area, to be implemented in future steps-->
+                <h1 class="title">Search area</h1>
+                <div class="searchbar">
+                    <input type="searchbar" id="searchbar" placeholder="Search.." name="Searchbar">
+                    <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" ></i></button> <!--Image for the search button taken from a external source-->
+                </div>
+            </div>
+            <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+                <h1 class="title">Experiences</h1>
+                <br>
+                <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
+                    <li class="experiencecell" id="sortable1">
+                        <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
+                        <h2 onclick=showDubai()>Dubai</h2>
+                        <p class="description">An Oasis in the middle of the dessert</p>
+                    </li>
+                    <li class="experiencecell" id="sortable2">
+                        <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
+                        <h2 onclick=showMonaco()>Monaco</h2>
+                        <p class="description">Casinos, yachts and automobiles</p>
+                    </li>
+                    <li class="experiencecell" id="sortable3">
+                        <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>New York</h2>
+                        <p class="description">The city that never sleeps</p>
+                    </li>
+                </ul>
+                <ul class="row" id="sortablerow2">
+                    <li class="experiencecell" id="sortable4">
+                        <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Moscow</h2>
+                        <p class="description">City of parks and hospitality</p>
+                    </li>
+                    <li class="experiencecell" id="sortable5">
+                        <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Paris</h2>
+                        <p class="description">City of light</p>
+                    </li>
+                    <li class="experiencecell" id="sortable6">
+                        <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>San Francisco</h2>
+                        <p class="description">Modern vs victorian architecture</p>
+                    </li>
+                </ul>
+                <ul class="row" id="sortablerow3">
+                    <li class="experiencecell" id="sortable7">
+                        <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Tokyo</h2>
+                        <p class="description">Cyberpunk in real life</p>
+                    </li>
+                    <li class="experiencecell" id="sortable8">
+                        <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Madrid</h2>
+                        <p class="description">Charming medieval city</p>
+                    </li>
+                    <ul class="experiencecell" id="sortable9">
+                        <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                        <h2 onclick=showNewyork()>Sydney</h2>
+                        <p class="description">Luxury near the wild</p>
+                    </li>
+                </ul>
+            </div>
         </div>
-        <div class="vl">
+    </main>
+    <br>
+    <footer>
+        <div class="logocontainer"> <!--Class for the webpage logo-->
+            <img src="images/neotravellogo.png" alt="neotravellogo" class="footerimg">
         </div>
-        <div class="rights">
-          <p>All rights reserved</p>
+        <div class="footnav"> <!--Menu implemented  but not redirected to any page, to be implemented in future steps-->
+            <a class="menus" href="#FAQs">FAQs</a>
+            <a class="menus" href="#privacy">Privacy policy</a>
+            <a class="menus" href="#copyright">Copyright</a>
         </div>
-      </div>       
-    </body>
+        <div class="socialmedia"> <!--Social media links, redirected to the main pages as the web site is not yet in the social media. Images are taken from a external source (second stylesheet link in the head of the page)-->
+            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
+            <a href="https://twitter.com/home?lang=es" class="fa fa-twitter"></a>
+            <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
+            <a href="https://www.instagram.com/?hl=es" class="fa fa-instagram"></a>
+        </div>
+    </footer>
+    <script>
+        $( function() {
+          $( "#sortablerow1, #sortablerow2, #sortablerow3" ).sortable({connectWith: ".row"});
+          $( "#sortablerow1, #sortablerow2, #sortablerow3" ).disableSelection();
+          $( "#connectedsortable" ).sortable();
+          $( "#connectedsortable" ).disableSelection();
+          
+        } );
+    </script>
+</body>
 </html>
