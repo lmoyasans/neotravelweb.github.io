@@ -1,517 +1,709 @@
-/*General settings for the whole web*/
-:root{  /* Implements the automatic dark mode*/
-    color-scheme:light dark;
-}
-body{
-    background-color: black;
-}
+/*The default layout is the mobile devices layout*/
 
-/*General settings for the fonts*/
-h1{
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-variant:small-caps;
-    font-style: italic;
-    font-size:200%;
-    color:white;
+*
+{
+  /*Include padding and border into element width*/
+  box-sizing: border-box;
+  /*Round the edges of images and divs*/
+  border-radius: 10px 10px 10px 10px;
+  -moz-border-radius: 10px 10px 10px 10px;
+  -webkit-border-radius: 10px 10px 10px 10px;
 }
 
-h2{
-    font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style:normal;
-    font-variant:small-caps;
-    color:white;
+a:link, a:visited
+{
+  color: black;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
 }
 
-p{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-style: oblique;
-    font-variant: small-caps;
-    color:white;
+a:hover, a:active
+{
+  background-color: rgb(5, 69, 189);
+  color: white;
+  font-weight:bold;
+  font-size:25px;
 }
 
-/*Header general settings and settings for each of the subparts*/
-
-/*title*/
-span#red{
-    color:rgb(212, 27, 58); 
+html
+{
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-span#orange{
-    color:rgb(228, 144, 49); 
+body
+{
+  /*Set a static background image for the whole page*/
+  background-image: url("../images/background2.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  height: 100%;
 }
 
-span#yellow{
-    color:rgb(255, 240, 30); 
+/**********************************************************************************************************
+/ Header section
+/**********************************************************************************************************/
+.header
+{
+  height: 20vh;
+  background-color: white;
+  margin-bottom: 2%;
 }
 
-span#green{
-    color:rgb(77, 224, 19); 
+.title
+{
+  height: 70%;
 }
 
-span#blue{
-    color:rgb(27, 140, 216); 
+.logo_img
+{
+  margin-top: 10%;
+  margin-left: 10%;
+  height: 100%;
+  float: left;
 }
 
-span#pink{
-    color:rgb(230, 36, 149); 
+.title_img
+{
+  margin-top: 1%;
+  margin-left: 3%;
+  height: 100%;
+  float: left;
 }
 
-.logocontainer{
-    border-style: solid;
-    border-color: white;
-    border-radius: 2px;
+.menu
+{
+  height: 30%;
+  /*The horizontal menu is not displayed in the mobile layout*/
+  display: none;
+}
+
+.menu a:link, .menu a:visited
+{
+  color: rgb(0, 102, 195);
+}
+
+.menu a:hover, .menu a:active
+{
+  color: white;
+}
+
+.menu_logo
+{
+  position: relative;
+  left: 1%;
+  top: 4%;
+  width: 1.5%;
+}
+
+.hamburger-menu
+{
+  height: 100%;
+  float: left;
+}
+
+.drop-down
+{
+  /*Set a high z-index so that the drop-down menu is presented above the rest of the content*/
+  z-index: 100;
+  margin-left: 3%;
+  position: absolute;
+  background-color: black;
+  top: 140px;
+  display: none;
+}
+
+/*Enable the drop-down hamburger menu only in the mobile layout*/
+@media only screen and (max-width: 600px)
+{
+  .hamburger-menu:hover .drop-down
+  {
+    max-height: 50vh;
+    display: block;
+  }
+}
+
+/**********************************************************************************************************
+/ Body section
+/**********************************************************************************************************/
+.row
+{
+  /*Make sure there is room for the footer below*/
+  height: 88%;
+  margin-bottom: 1%;
+}
+
+.row::after
+{
+    content: "";
+    clear: both;
+    display: block;
+}
+
+.right, .left
+{
+    background-color: rgb(255, 255, 255, 0.6);
+    /*Do not show the left and right panels in the mobile layout*/
+    display: none;   
+}
+
+.left a
+{
+  /*Make the links in the left panels more readable by increasing font size*/
+  font-size: 120%;
+}
+
+.center
+{
+    background-color: rgb(255, 255, 255);
+}
+
+.topic_img
+{
+    /*Make sure the topic image is centered*/
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 95%;
+}
+
+.left-menu
+{
+  /*The horizontal menu items will appear in the left panel only in the tablet version*/
+  display: none;
+}
+
+/*Make the columns take the whole width in mobile layout*/
+[class*="col-"]
+{
+    width: 100%;
     padding: 1%;
+}
+
+.video
+{
+    width: 90%;
+}
+
+.video-title
+{
+  width: 100%;
+}
+
+.video-description
+{
+  width: 100%;
+}
+
+.discussion_image
+{
+  float: right;
+  width: 20%;
+}
+
+.calendar_image
+{
+  float: right;
+  width: 20%;
+}
+    
+.video iframe
+{
     width: 100%;
+    height: 56.25%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+#students
+{
+    background-color: rgb(0, 0, 0, 0);
+}
+
+#students div
+{
+  padding-top: 2%;
+  background-color: rgb(255, 255, 255, 1);
+  height: 200px;
+  margin-bottom: 2%;
+}
+
+.student_img
+{
+  border: 5px solid rgb(0, 102, 195);
+  height: 70%;
+  margin-top: 2%;
+  margin-left: 2%;
+  margin-right: 2%;
+  float: left;
+}
+
+.send_mail_icon
+{
+    width: 10%;
+    margin-right: 1%;
+    float: right;
+}
+
+#forum h2
+{
+  color:  rgb(0, 102, 195);
+}
+
+.forum-reply-button
+{
+  float: right;
+  background-color: rgb(0, 102, 195);
+  color: white;
+}
+
+#forum-footer
+{
+  font-style: italic;
+  text-align: center;
+  font-size: 90%;
+}
+
+#course-contents:not(:target),
+#students:not(:target),
+#grades:not(:target),
+#forum:not(:target),
+#login:not(:target),
+#language:not(:target)
+{
+    display: none;
+}
+
+.video-description
+{
+  display: none;
+}
+
+:target
+{
+    display: block;
+}
+
+table
+{
+    width:100%;
+}
+
+th, td
+{
+    text-align: left;
+    padding: 8px;
+}
+  
+tr:nth-child(even){background-color: #f2f2f2}
+  
+th
+{
+    background-color:  rgb(0, 102, 195);
+    color: white;
+}
+
+#language
+{
+  min-height: 30%;
+}
+
+.lang-img
+{
+  width: 10%;
+}
+
+.lang-div
+{
+  width: 33.33%;
+  height: 30px;
+  margin-bottom: 10%;
+  float: left;
+}
+
+.lang-div h2
+{
+  padding-top: 3%;
+}
+
+.footer
+{
+    display: table;
+    height: 10vh;
+    width: 100%;
+    background-color: rgb(255, 255, 255, 0.6);
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+}
+
+.vl
+{
+  display: table-cell;
+  border-left: 6px solid rgb(7, 1, 12);
+  height: 70%;
+  left: 50%;
+  margin-left: -3px;
+  top: 0;
+}
+
+.copyright
+{
+    display: table-cell;
+    width: 25%;
+    padding-left: 2%;
+    font-weight: bold;
+    text-align: left;
+}
+
+.support
+{
+    display: table-cell;
+    width: 50%;
+    font-weight: bold;
     text-align: center;
 }
 
-.nav-bar{
-     border-style: solid;
-    border-color: white;
-    border-radius: 2px;
-    padding: 10px;
-    width: 100%;
-    height: 50px;
-    margin-top: 2%;
-}
-
-button{ /*Personalization of buttons style*/
-    background-color: black;
-    color:white;
-    border-radius: 100px;
-    padding: 15px;
-}
-
-header {
-    height: 2%;
-    align-items: center;
-}
-
-header img {
-    height: 50px;
-}
-
-.topnav{
-    justify-content:space-evenly;
-    margin:auto;
-    text-align: center;
-}
-
-.topnav a{ /*Introduce space between the different options of the top navigator*/
-    padding: 12px;
-}
-
-.buttons{ /**Referred to the header buttons only*/
+.rights
+{
+    display: table-cell;
+    width: 25%;
+    padding-right: 2%;
+    font-weight: bold;
     text-align: right;
-    float: left;
-    width: 30%; 
 }
 
-.menus{  /*Color and style of both top and bottom menus*/
-    text-decoration: none;
-    color:indianred;
-    font-family:cursive;
-    font-style:italic;
-    font-size: 20px;
-    cursor:pointer;
-}
-
-.menu-button{
-    float: left;
-    width: 20%;  
-}
-
-.requireLoginSection{
-    display:none;
-}
-
-#usernamespace{
-    color:indianred;
-    font-family:cursive;
-    font-style:italic;
-    font-size:20px;
-}
-/*Body settings*/
-
-#logoutPopup{
-    display:none;
-    position:fixed;
-    background-color: darkslategray;
-    border: 2px solid white;
-    width: 50vw;
-    margin-left: 25vw;
-    color: white;
-}
-
-#popupAddExperience{
-    display:none;
-    position:fixed;
-    background-color: darkslategray;
-    border: 2px solid white;
-    width: 50vw;
-    margin-left: 25vw;
-    height: 15vw;
-    color: white;
-    overflow:auto;
-}
-
-#newyork{
-    display:none;
-    position:fixed;
-    background-color: black;
-    border: 2px solid white;
-    width: 65vw;
-    height: 38vw;
-    margin-left: 20vw;
-    overflow:auto;
-}
-
-#myProfile{
-    display:none;
-    position:fixed;
-    background-color: black;
-    border: 2px solid white;
-    width: 65vw;
-    height: 38vw;
-    margin-left: 20vw;
-    overflow:auto;
-    color:white;
-    justify-content:center;
-}
-
-#monaco{
-    display:none;
-    position:fixed;
-    background-color: black;
-    border: 2px solid white;
-    width: 65vw;
-    height:38vw;
-    margin-left: 20vw;
-    overflow:auto;
-}
-
-#dubai{
-    display:none;
-    position:fixed;
-    background-color: black;
-    border: 2px solid white;
-    width: 65vw;
-    height: 38vw;
-    margin-left: 20vw;
-    overflow:auto;
-}
-
-.profilepopup{
-    display:none;
-    position:fixed;
-    background-color: darkslategray;
-    border: 2px solid white;
-    width: 50vw;
-    margin-left: 25vw;
-    overflow:auto;
-    color:white;
-}
-
-.modal{
-    display:none;
-    position:fixed;
-    background-color: darkslategray;
-    border: 2px solid white;
-    width: 50vw;
-    margin-left: 25vw;
-    overflow:auto;
-    color:white;
-}
-.imagepop img{
-    width:100%;
-}
-/*Login popup*/
-.form{
-    display:None;
-    position:fixed;
-    background-color: darkslategray;
-    border: 2px solid white;
-    width: 50vw;
-    margin-left: 25vw;
-}
-
-
-
-.mapimage{
-    width:100vw;
-    height:100vh;
-    background-image: url(../images/worldmap.jpg);
-}
-
-.mapbut{
-    background-color: Transparent;
-    background-repeat:no-repeat;
-    border: none;
-    cursor:pointer;
-    overflow: hidden;        
-}
-
-.circle{
-    position: relative;
-    height: 3rem;
-    width: 3rem;
-    background-color: transparent;
-}
-
-#newyorkk{
-    margin-left: 28.5rem;
-    top: 25.5rem;
-}
-
-#dubaii{
-    margin-left: 67.5rem;
-    top: 23rem;
-}
-
-#monacoo{
-    margin-left: 54.3rem;
-    top: 19.2rem;
-}
-
-#myExperiences{
-    display:none;
-    position:fixed;
-    background-color: black;
-    border: 2px solid white;
-    width: 65vw;
-    height:38vw;
-    margin-left: 20vw;
-    overflow:auto;
-}
-
-.title{
-    display: flex;
-    justify-content: center;
-}
-
-.searcharea{ /*Setting the set area to 80% of the total width of the webpage*/
-    margin-left: 10%;
-    margin-right: 10%;
-}
-
-.searchbar{
-    display: flex;
-    justify-content: center;
-}
-
-input[name="Searchbar"]{
-    width: 60%;
-}
-
-.exploresection{ /*Setting the explore section to 80% of the total webpage width*/
-    margin-left:10%;
-    margin-right:10%;
-    width:80%;
-    display:table;
-    justify-content:center;
-}
-
-.row{ /*Including margin to make sure that the images are aligned to the center*/
-    margin: 0.01%;
-    display:flex;
-    justify-content: center;
-}
-
-.experiencecell{ /*Setting the images to be 3 per row (33.33% of the width of the row)*/
-    width: 33.33%;
-    float: left;
-    justify-content: center;
-    display:table-cell;
-    border-color:oldlace;
-    border-style:groove;
-    padding: 10px;
-    height:50%;
-}
-.experiencecard{
-    width:33.33%;
-    float: left;
-    justify-content: center;
-    display:inline;
-    border-color:oldlace;
-    border-style:groove;
-    padding: 10px;
-    height:50%;
-}
-.experiencecard img{
-    margin:10%;
-    width:80%;
-    height:70%;
-    display: flex;
-    justify-content:center;
-}
-.experiencecard h2{
-    width:100%;
-    display:flex;
-    justify-content: center;
-}
-
-/*Settings for the contents of the experiences cells*/
-
-.experiencecell img{
-    margin:10%;
-    width:80%;
-    height:70%;
-    display: flex;
-    justify-content:center;
-}
-
-.experiencecell h2{
-    width:100%;
-    display:flex;
-    justify-content: center;
-}
-
-/*Settings for dubai, new york and dubai pages*/
-
-.photovideos{ /*Settings for the images and videos (5 column-2 rows)*/
-    margin-left:10%;
-    margin-right:10%;
-    width:80%;
-    display:table;
-    justify-content:center;
-}
-
-.description{
-    width:100%;
-    display:flex;
-    justify-content: center;
-}
-.content h1{
-    margin-left:10%;
-    margin-right:10%;
-    width:80%;
-    display:flex;
-    justify-content: center;
-}
-.content p{
-    width:80%;
-    margin-left:10%;
-    margin-right:10%;
-}
-
-.fivecolumnrow{/*Settings for the images and videos (5 column-2 rows)*/
-    display:flex;
-    justify-content:center;
-}
-
-iframe{ /*Information of the sixe of the videos*/
-    width:560;
-    height:315;
-}
-
-.cell{/*Settings for the images and videos (5 column-2 rows)*/
-    width:20%;
-    float:left;
-    display:table-cell;
-    justify-content:center;
-    border-color:oldlace;
-    border-style:groove;
-}
-
-.cell iframe{/*Settings for the images and videos (5 column-2 rows)*/
-    margin:10%;
-    width:80%;
-    height:70%;
-    display: flex;
-    justify-content:center;
-}
-
-.cell img{/*Settings for the images and videos (5 column-2 rows)*/
-    margin:10%;
-    width:80%;
-    height:70%;
-    display: flex;
-    justify-content:center;
-}
-
-/*Footer settings*/
-
-footer{
-    width:100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.socialmedia{
-    flex-basis:33.33%;
-    text-align:right;
-    padding:10px;
-}
-
-.footnav{
-    display:flex;
-    flex-basis:33.33%;
-    justify-content:space-between;
-    margin:auto;
-}
-
-.fa { /*Personalization of the social media icons style*/
-    font-size: 30px;
-    width: 50px;
-    text-decoration: none;
-    background: black;
-    color: white;
-}
-
-footer img{
-    height: 70px;
-}
-
-.popup{
-  height: 10vh;
-  width: 10vh;
-}
-
-/*Responsiveness for different resolution devices*/
-
-@media screen and (max-width: 680px) { /*Responsiveness of the webpage for mobile devices*/
-    .row{
-        display:table;
-        justify-content:center;
+@media only screen and (min-width: 600px)
+{
+    /* For tablets: */
+    .left
+    {
+        display: block;
     }
-    .exploresection{
-        margin-right:10%;
-        margin-left:10%;
-        width:80%;
-        display:table;
-        justify-content:center;
+
+    .center
+    {
+        margin-left: 2%;
+        margin-right: 0%;
     }
-    .experiencecell { /*Change the experiences matrix to one column*/
-        border-color:transparent;/*Elimination of the border color to avoid excess of visual information in smaller devices*/
-        margin:auto;
-        width:100%;
-        display:space-between;
-        justify-content:center;
+
+    .left-menu
+    {
+      display: block;
     }
-    .logocontainer img{ /*Reduction of the top nav logo to fit with smaller spaces*/
-        height:70px;
+
+    .video-description
+    {
+      display: block;
+    }
+
+    .col-s-1 {width: 8.33%;}
+    .col-s-2 {width: 16.66%;}
+    .col-s-3 {width: 25%;}
+    .col-s-4 {width: 33.33%;}
+    .col-s-5 {width: 41.66%;}
+    .col-s-6 {width: 73%;}
+    .col-s-7 {width: 58.33%;}
+    .col-s-8 {width: 66.66%;}
+    .col-s-9 {width: 75%;}
+    .col-s-10 {width: 83.33%;}
+    .col-s-11 {width: 91.66%;}
+    .col-s-12 {width: 100%;}
+
+    [class*="col-"]
+    {
+        float: left;
+    }
+}
+  
+@media only screen and (min-width: 768px)
+{
+    /* For desktop: */
+    .menu
+    {
+        font-size: 150%;
+        display: block;
+        text-align: right;
+    }
+
+    .left, .right
+    {
+        display: block;
+    }
+
+    .left-menu
+    {
+      display: none;
+    }
+
+    .center
+    {
+        margin-right: 2%;
+        margin-left: 2%;
+    }
+
+    .col-1 {width: 8.33%;}
+    .col-2 {width: 16.66%;}
+    .col-3 {width: 25%;}
+    .col-4 {width: 33.33%;}
+    .col-5 {width: 41.66%;}
+    .col-6 {width: 46%;}
+    .col-7 {width: 58.33%;}
+    .col-8 {width: 66.66%;}
+    .col-9 {width: 75%;}
+    .col-10 {width: 83.33%;}
+    .col-11 {width: 91.66%;}
+    .col-12 {width: 100%;}
+
+    [class*="col-"]
+    {
+        float: left;
+    }
+
+    .video
+    {
+        display: table;
+        position: relative;
+        max-width: 100%;
+        min-height: 350px;
+    }
+
+    .video-description
+    {
+      display: table-cell;
+      width: 40%;
+      margin: 0;
+      float: right;
+    }
+    
+    .video iframe
+    {
+        display: table-cell;
+        width: 50%;
+        max-height: 100%;
+        margin-left: 5%;
+        margin-right: 5%;
+        float: left;
     }
 }
 
-@media screen and (max-width:1024px) and (min-width:681px){/*Responsiveness of the webpage for tablets*/
-    .row{
-        display:flex;
-    }
-    .exploresection{
-        margin-right:10%;
-        margin-left:10%;
-        width:80%;
-        display:table;
-    }
-    .experiencecell{ /*Elimination of the border color to avoid excess of visual information in smaller devices*/
-        border-color:transparent;
-        margin:auto;
-        display:table-cell;
-        padding:0px;
-        float:none;
-    }
-    .logocontainer img{/*Reduction of the top nav logo to fit with smaller spaces*/
-        height:70px;
-    }
+.drop-down a
+{
+  color: white;
+}
+
+
+
+/** forum style**/
+/* Center Column */
+
+#centercolumn {
+	width: 552px;
+	color: #333;
+	background-color: #fff;
+	float: left;
+	text-align: center;
+}
+
+#centercolumn_2 {
+	margin: 8px auto;
+	width: 542px;
+	text-align: left;
+}
+
+#centercolumn a {
+	color: #333;
+	background-color: inherit;
+}
+
+#centercolumn a:hover {
+	text-decoration: none;
+}
+
+/* //* **LOGIN**/
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500);
+*:focus {
+  outline: none;
+}
+
+.login-box
+{
+  margin: 0;
+  padding: 0;
+  background: #DDD;
+  font-size: 16px;
+  color: #222;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+}
+
+.login-box
+{
+  position: relative;
+  margin: 5% auto;
+  width: 100%;
+  height: 400px;
+  background: #FFF;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.login-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  box-sizing: border-box;
+  padding-top: 10%;
+  padding-left: 2%;
+  padding-right: 2%;
+  width: 50%;
+  float: left;
+}
+
+.login-box h1
+{
+  margin: 0 0 20px 0;
+  font-weight: 300;
+  font-size: 28px;
+}
+
+input[type="text"],
+input[type="password"]
+{
+  display: block;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+  padding: 4px;
+  /*width: 220px;*/
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-bottom: 1px solid #AAA;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  transition: 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus
+{
+  border-bottom: 2px solid #16a085;
+  color: #16a085;
+  transition: 0.2s ease;
+}
+
+.signup-button
+{
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  margin-top: 28px;
+  width: 120px;
+  height: 32px;
+  background: rgb(0, 102, 195);
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.1s ease;
+  cursor: pointer;
+}
+
+.signup-button:hover,
+.signup-button:focus
+{
+  opacity: 0.8;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.signup-button:active
+{
+  opacity: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.1s ease;
+}
+
+.login-box .or
+{
+  width: 40px;
+  height: 40px;;
+  background: #DDD;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  line-height: 40px;
+  text-align: center;
+  margin: 0;
+}
+
+.login-right
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  padding: 40px;
+  width: 50%;
+  height: 400px;
+  background: url('https://goo.gl/YbktSj');
+  background-size: cover;
+  background-position: center;
+  border-radius: 0 2px 2px 0;
+  float: right;
+}
+
+.login-box .right .loginwith
+{
+  display: block;
+  margin-bottom: 40px;
+  font-size: 28px;
+  color: #FFF;
+  text-align: center;
+}
+
+button.social-signin
+{
+  margin-bottom: 20px;
+  /*width: 220px;*/
+  width: 100%;
+  /*height: 36px;*/
+  height: 15%;
+  border: none;
+  border-radius: 2px;
+  color: #FFF;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  transition: 0.2s ease;
+  cursor: pointer;
+}
+
+button.social-signin:hover,
+button.social-signin:focus
+{
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin:active
+{
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+  transition: 0.2s ease;
+}
+
+button.social-signin.facebook
+{
+  background: #32508E;
+}
+
+button.social-signin.twitter
+{
+  background: #55ACEE;
+}
+
+button.social-signin.google
+{
+  background: #DD4B39;
 }
