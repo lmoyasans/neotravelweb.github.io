@@ -17,7 +17,10 @@
             <img id="hamburguer-img" src="images/menu.png" alt="hamburguer-menu-img">
             <div class="drop-down">
                 <a href="#home">Home</a><br>
-                <a onclick=showDubai()>Dubai</a><br>
+                <a href="#about-us">About us</a><br>
+                <a href="#help">Help</a><br>
+                <a href="#faq">FAQs</a><br>
+                <a href="#terms">Terms of Use</a><br>
               </div>
         </div>
         <div class="logocontainer"> <!--Class for the webpage logo-->
@@ -415,60 +418,63 @@
                     <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" ></i></button> <!--Image for the search button taken from a external source-->
                 </div>
             </div>
-            <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+            <div>
                 <h1 class="title">Experiences</h1>
-                <br>
-                <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
-                    <li class="experiencecell" id="sortable1">
-                        <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
-                        <h2 onclick=showDubai()>Dubai</h2>
-                        <p class="description">An Oasis in the middle of the dessert</p>
-                    </li>
-                    <li class="experiencecell" id="sortable2">
-                        <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
-                        <h2 onclick=showMonaco()>Monaco</h2>
-                        <p class="description">Casinos, yachts and automobiles</p>
-                    </li>
-                    <li class="experiencecell" id="sortable3">
-                        <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>New York</h2>
-                        <p class="description">The city that never sleeps</p>
-                    </li>
-                </ul>
-                <ul class="row" id="sortablerow2">
-                    <li class="experiencecell" id="sortable4">
-                        <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Moscow</h2>
-                        <p class="description">City of parks and hospitality</p>
-                    </li>
-                    <li class="experiencecell" id="sortable5">
-                        <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Paris</h2>
-                        <p class="description">City of light</p>
-                    </li>
-                    <li class="experiencecell" id="sortable6">
-                        <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>San Francisco</h2>
-                        <p class="description">Modern vs victorian architecture</p>
-                    </li>
-                </ul>
-                <ul class="row" id="sortablerow3">
-                    <li class="experiencecell" id="sortable7">
-                        <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Tokyo</h2>
-                        <p class="description">Cyberpunk in real life</p>
-                    </li>
-                    <li class="experiencecell" id="sortable8">
-                        <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Madrid</h2>
-                        <p class="description">Charming medieval city</p>
-                    </li>
-                    <ul class="experiencecell" id="sortable9">
-                        <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Sydney</h2>
-                        <p class="description">Luxury near the wild</p>
-                    </li>
-                </ul>
+                <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+                    
+                    <br>
+                    <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
+                        <li class="experiencecell" id="sortable1">
+                            <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
+                            <h2 onclick=showDubai()>Dubai</h2>
+                            <p class="description">An Oasis in the middle of the dessert</p>
+                        </li>
+                        <li class="experiencecell" id="sortable2">
+                            <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
+                            <h2 onclick=showMonaco()>Monaco</h2>
+                            <p class="description">Casinos, yachts and automobiles</p>
+                        </li>
+                        <li class="experiencecell" id="sortable3">
+                            <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>New York</h2>
+                            <p class="description">The city that never sleeps</p>
+                        </li>
+                    </ul>
+                    <ul class="row" id="sortablerow2">
+                        <li class="experiencecell" id="sortable4">
+                            <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Moscow</h2>
+                            <p class="description">City of parks and hospitality</p>
+                        </li>
+                        <li class="experiencecell" id="sortable5">
+                            <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Paris</h2>
+                            <p class="description">City of light</p>
+                        </li>
+                        <li class="experiencecell" id="sortable6">
+                            <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>San Francisco</h2>
+                            <p class="description">Modern vs victorian architecture</p>
+                        </li>
+                    </ul>
+                    <ul class="row" id="sortablerow3">
+                        <li class="experiencecell" id="sortable7">
+                            <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Tokyo</h2>
+                            <p class="description">Cyberpunk in real life</p>
+                        </li>
+                        <li class="experiencecell" id="sortable8">
+                            <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Madrid</h2>
+                            <p class="description">Charming medieval city</p>
+                        </li>
+                        <ul class="experiencecell" id="sortable9">
+                            <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Sydney</h2>
+                            <p class="description">Luxury near the wild</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>

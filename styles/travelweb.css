@@ -36,6 +36,9 @@ button{ /*Personalization of buttons style*/
   color:white;
   border-radius: 100px;
   padding: 15px;
+  font-size: 1.37vw;
+  font-family:cursive;
+  font-style:italic;
 }
 
 header {
@@ -58,6 +61,7 @@ header img {
 
 .topnav a{ /*Introduce space between the different options of the top navigator*/
   padding: 12px;
+  font-size:2vw;
 }
 
 .buttons{ /**Referred to the header buttons only*/
@@ -66,7 +70,7 @@ header img {
 
 .menus{  /*Color and style of both top and bottom menus*/
   text-decoration: none;
-  color:indianred;
+  color:aqua;
   font-family:cursive;
   font-style:italic;
   font-size: 20px;
@@ -222,19 +226,24 @@ header img {
 }
 
 #hamburguer-img{
-  width:5vw;
-  height:5vw;
+  width:3vw;
+  height:3vw;
 }
 
 .drop-down
 {
   /*Set a high z-index so that the drop-down menu is presented above the rest of the content*/
   z-index: 100;
-  margin-left: 3%;
+  margin-left: 1%;
   position: absolute;
-  background-color: black;
-  top: 140px;
+  background-color:black;
+  top: 35 vw;
   display: none;
+}
+
+.drop-down a {
+  color:white;
+  font-size: 1.5vw;
 }
 
 .hamburguer-menu:hover .drop-down{
@@ -434,9 +443,13 @@ footer{
   justify-content:space-between;
   margin:auto;
 }
+.footnav a{
+  margin:auto;
+  padding: 12px;
+  font-size:2vw;
+}
 
 .fa { /*Personalization of the social media icons style*/
-  font-size: 30px;
   width: 50px;
   text-decoration: none;
   background: black;
@@ -444,7 +457,8 @@ footer{
 }
 
 footer img{
-  height: 70px;
+  height: 100px;
+  width: 15vw
 }
 
 .popup{
