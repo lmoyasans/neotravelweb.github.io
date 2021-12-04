@@ -155,7 +155,6 @@ function closeSignupForm(){
 }
 
 function signup(){
-    document.cookie=""
     if (document.getElementById("terms").checked){
         var elements = document.getElementById("signup");
         var cookie = "";
@@ -164,12 +163,14 @@ function signup(){
             alert("Account already created");
         }else{
             for(var i=1; i<elements.length;i++){
-                cookie = elements[i].name + "=" + elements[i].value;
-                document.cookie = cookie;
+                new_user_data =
+                cookie = elements[i].name + ":" + elements[i].value;
+                document.cookie = cookie
             }
             alert("Account created");
             document.getElementById("notLogged").style.display = "none";
             document.getElementById("notLogged2").style.display = "none";
+            document.getElementById("menuLogged").style.display = "block";
             document.getElementById("requireLoginSection").style.display = "block";
             document.getElementById("profileimageimg").src = elements[9].value;
             document.getElementById("usernamespace").innerHTML = elements[1].value;
