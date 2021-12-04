@@ -18,6 +18,7 @@ function login(){
     if (cookie_username == username && cookie_password == password) {
         document.getElementById("notLogged").style.display = "none";
         document.getElementById("notLogged2").style.display = "none";
+        document.getElementById("menuLogged").style.display = "block";
         document.getElementById("profileimageimg").style.display="block";
         document.getElementById("requireLoginSection").style.display = "block";
         document.getElementById("usernamespace").style.color="indianred";
