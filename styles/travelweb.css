@@ -196,7 +196,6 @@ header img {
 }
 
 
-
 .mapimage{
   width:100vw;
   height:100vh;
@@ -437,6 +436,10 @@ footer{
   padding:10px;
 }
 
+.socialmedia a{
+  font-size:2vw;
+}
+
 .footnav{
   display:flex;
   flex-basis:33.33%;
@@ -458,6 +461,7 @@ footer{
 
 footer img{
   height: 100px;
+  margin-right:20vw;
   width: 15vw
 }
 
