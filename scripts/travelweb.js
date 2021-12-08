@@ -226,6 +226,211 @@ function searchBar(){
     }
 }
 
+//functions for filters 
+function filters(){
+    if(document.getElementById("filters").style.display == "block"){
+        document.getElementById("filters").style.display = "none";
+    }else{
+        document.getElementById("filters").style.display = "block";
+    }
+}
+
+function apply(){
+    document.getElementById("filters").style.display = "none";
+    document.getElementById('settings').style.display = "none";
+
+    let i = document.getElementById('int_options').value;
+    let b = parseInt(document.getElementById('budget').value);
+    let d = parseInt(document.getElementById('distance').value);
+    let c = document.getElementById('french_cities').value;
+    let x = document.getElementsByClassName('experiencecell');
+
+    if (c=='lyon'){ //Because we don't have data base, we choose to simulate distance filter only for Lyon
+        if (b>=540 && d>=5006 && (i=='leisure' || i=='')) {  //criterias for Dubaï (settings & filters)
+            x[2].style.display="block";
+        }else{
+            x[2].style.display="none";
+        }
+        if (b>=352 && d>=304 && (i=='leisure' || i=='')) {  //criterias for Monaco (settings & filters)
+            x[3].style.display="block";
+        }else{
+            x[3].style.display="none";
+        }
+        if (b>=1005 && d>=6110 && (i=='leisure' || i=='food'  || i=='')) {  //criterias for New York (settings & filters)
+            x[4].style.display="block";
+        }else{
+            x[4].style.display="none";
+        }
+        if (b>=350 && d>=2528 && (i=='capital' || i=='leisure'  || i=='')) {  //criterias for Moscou (settings & filters)
+            x[5].style.display="block";
+        }else{
+            x[5].style.display="none";
+        }
+        if (b>=200 && d>=392 && (i=='capital' || i=='art'  || i=='')) {  //criterias for Paris (settings & filters)
+            x[6].style.display="block";
+        }else{
+            x[6].style.display="none";
+        }
+        if (b>=955 && d>=9337 && (i=='art' || i=='history'  || i=='')) {  //criterias for San Francisco (settings & filters)
+            x[7].style.display="block";
+        }else{
+            x[7].style.display="none";
+        }
+        if (b>=1220 && d>=9891 && (i=='food' || i=='art'  || i=='')) {  //criterias for Tokyo (settings & filters)
+            x[8].style.display="block";
+        }else{
+            x[8].style.display="none";
+        }
+        if (b>=120 && d>=1227 && (i=='capital' || i=='leisure'  || i=='')) {  //criterias for Madrid (settings & filters)
+            x[9].style.display="block";
+        }else{
+            x[9].style.display="none";
+        }
+        if (b>=1056 && d>=16884 && (i=='leisure'  || i=='')){ //criterias for Sydney (settings & filters)
+            x[10].style.display="block";
+        }else{
+            x[10].style.display="none";
+        }
+    }else if(c=="" && document.getElementById('country').value==""){ //no filters, only settings (interests)
+        if (i=='leisure' || i=='') {  //criterias for Dubaï
+            x[2].style.display="block";
+        }else{
+            x[2].style.display="none";
+        }
+        if (i=='leisure'  || i=='') {  //criterias for Monaco
+            x[3].style.display="block";
+        }else{
+            x[3].style.display="none";
+        }
+        if (i=='leisure' || i=='food'  || i=='') {  //criterias for New York
+            x[4].style.display="block";
+        }else{
+            x[4].style.display="none";
+        }
+        if (i=='capital' || i=='leisure'  || i=='') {  //criterias for Moscou
+            x[5].style.display="block";
+        }else{
+            x[5].style.display="none";
+        }
+        if (i=='capital' || i=='art'  || i=='') {  //criterias for Paris
+            x[6].style.display="block";
+        }else{
+            x[6].style.display="none";
+        }
+        if (i=='art' || i=='history'  || i=='') {  //criterias for San Francisco
+            x[7].style.display="block";
+        }else{
+            x[7].style.display="none";
+        }
+        if (i=='food' || i=='art'  || i=='') {  //criterias for Tokyo
+            x[8].style.display="block";
+        }else{
+            x[8].style.display="none";
+        }
+        if (i=='capital' || i=='leisure'  || i=='') {  //criterias for Madrid
+            x[9].style.display="block";
+        }else{
+            x[9].style.display="none";
+        }
+        if (i=='leisure'  || i=='') { //criterias for Sydney
+            x[10].style.display="block";
+        }else{
+            x[10].style.display="none";
+        }
+    }else{ // distance filter from another place than Lyon
+        alert("Sorry we haven't already implement distance filters for this home city, please choose an other")
+    }
+}
+
+function filter1(){
+    document.getElementById('exp_name').innerHTML="&#9899; experience's name";
+}
+
+function filter2(){
+    document.getElementById('author').innerHTML="&#9899; author";
+}
+
+function filter3(){
+    document.getElementById('interest').innerHTML="&#9899; interests";
+    document.getElementById('int_options').style.display = "block";
+}
+
+//functions for settings
+function settings(){
+    if(document.getElementById('settings').style.display == "block"){
+        document.getElementById('settings').style.display = "none";
+    }else{
+        document.getElementById('settings').style.display = "block"
+    }
+}
+
+function budget_cursor(){
+    var x = document.getElementById('budget').value;
+    document.getElementById('budget-section').innerHTML="Budget per person : "+x+"€";
+}
+
+function distance_cursor(){
+    var x = document.getElementById('distance').value;
+    document.getElementById('distance-section').innerHTML="Distance : "+x+" km";
+}
+
+function applySettings(){
+    document.getElementById('settings').style.display = "none";
+    let b = parseInt(document.getElementById('budget').value);
+    let d = parseInt(document.getElementById('distance').value);
+    let c = document.getElementById('french_cities').value;
+    let x = document.getElementsByClassName('experiencecell');
+    if (c=='lyon'){ //Because we don't have data base, we choose to simulate distance filter only for Lyon
+        if (b>=540 && d>=5006) {  //criterias for Dubaï
+            x[2].style.display="block";
+        }else{
+            x[2].style.display="none";
+        }
+        if (b>=352 && d>=304) {  //criterias for Monaco
+            x[3].style.display="block";
+        }else{
+            x[3].style.display="none";
+        }
+        if (b>=1005 && d>=6110) {  //criterias for New York
+            x[4].style.display="block";
+        }else{
+            x[4].style.display="none";
+        }
+        if (b>=350 && d>=2528) {  //criterias for Moscou
+            x[5].style.display="block";
+        }else{
+            x[5].style.display="none";
+        }
+        if (b>=200 && d>=392) {  //criterias for Paris
+            x[6].style.display="block";
+        }else{
+            x[6].style.display="none";
+        }
+        if (b>=955 && d>=9337) {  //criterias for San Francisco
+            x[7].style.display="block";
+        }else{
+            x[7].style.display="none";
+        }
+        if (b>=1220 && d>=9891) {  //criterias for Tokyo
+            x[8].style.display="block";
+        }else{
+            x[8].style.display="none";
+        }
+        if (b>=120 && d>=1227) {  //criterias for Madrid
+            x[9].style.display="block";
+        }else{
+            x[9].style.display="none";
+        }
+        if (b>=1056 && d>=16884) { //criterias for Sydney
+            x[10].style.display="block";
+        }else{
+            x[10].style.display="none";
+        }
+    }else{
+        alert("Sorry we haven't already implement distance filters for this home city, please choose an other")
+    }
+}
+
 //Functions for myexperiences
 function openAddExperience(){
     document.getElementById("popupAddExperience").style.display="block";
