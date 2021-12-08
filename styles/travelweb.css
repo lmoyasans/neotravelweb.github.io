@@ -89,11 +89,11 @@ header img {
 	display: none;
 }
 
-#usernamespace {
-	color: indianred;
-	font-family: cursive;
-	font-style: italic;
-	font-size: 20px;
+#usernamespace{
+  color:aqua;
+  font-family:cursive;
+  font-style:italic;
+  font-size:20px;
 }
 /*Body settings*/
 
