@@ -13,14 +13,24 @@
 </head>
 <body>
     <header>
+        <div class=hamburguer-menu>
+            <img id="hamburguer-img" src="images/menu.png" alt="hamburguer-menu-img">
+            <div class="drop-down">
+                <a href="#home">Home</a><br>
+                <a href="#about-us">About us</a><br>
+                <a href="#help">Help</a><br>
+                <a href="#faq">FAQs</a><br>
+                <a href="#terms">Terms of Use</a><br>
+              </div>
+        </div>
         <div class="logocontainer"> <!--Class for the webpage logo-->
-            <img src="images/neotravellogo.png" alt="neotravellogo">
+            <img src="images/neotravellogo.jpg" alt="neotravellogo">
         </div>
         <div class="topnav"> <!-- Header navigator with the links to the three main experiences that are also in the map, and the home button to return to the initial page-->
             <a class="menus" href="#home">Home</a>
             <a class="menus" onclick=showDubai()>Dubai</a>
             <a class="menus" onclick=showMonaco()>Monaco</a>
-            <a class="menus" onclick=showDubai()>New York</a>
+            <a class="menus" onclick=showNewYork()>New York</a>
         </div>
         <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
             <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
@@ -237,23 +247,25 @@
             <button type="button" onclick=openChangeUsername()>Change username</button>
             <button type="button" onclick=openChangeInterest()>Change interest</button>
             <button type="button" onclick=openChangeProfileImage()>Change profile image</button>
-            <h1>My profile</h1>
-            <h2>Username:</h2>
-            <div id="usernameprof"></div>
-            <h2>Password:</h2>
-            <div id="passwordprof"></div>
-            <h2>Name: </h2>
-            <div id="nameprof"></div>
-            <h2>Surnames:</h2>
-            <div id="surnameprof"></div>
-            <h2>Email: </h2>
-            <div id="emailprof"></div>
-            <h2>Birthdate:</h2>
-            <div id="birthprof"></div>
-            <h2>Interests: </h2>
-            <div id="interestprof"></div>
-            <h2>Photo: </h2>
-            <div id="photoprof"><img src="images/dubai.jpeg" alt="profilePhoto" id="profilephotoprof"></div>
+            <div class="content">
+                <h1>My profile</h1>
+                <h2>Username:</h2>
+                <div id="usernameprof"></div>
+                <h2>Password:</h2>
+                <div id="passwordprof"></div>
+                <h2>Name: </h2>
+                <div id="nameprof"></div>
+                <h2>Surnames:</h2>
+                <div id="surnameprof"></div>
+                <h2>Email: </h2>
+                <div id="emailprof"></div>
+                <h2>Birthdate:</h2>
+                <div id="birthprof"></div>
+                <h2>Interests: </h2>
+                <div id="interestprof"></div>
+                <h2>Photo: </h2>
+                <div id="photoprof"><img src="images/dubai.jpeg" alt="profilePhoto" id="profilephotoprof"></div>
+            </div>
         </div>
         <div class="profilepopup" id="changeUsername">
             <h1>Introduce new username</h1>
@@ -394,7 +406,9 @@
         </div>
 
         <div class="maincontent" id="home"> <!--Section for the map, search area and experiences, hidden when clicking one of the experiences of the map or the header navigator bar-->
-            <div class="mapimage">
+            <div id="map-container">
+                <img class="mapimage" src="./images/worldmap.jpg" alt="Map of Europe">
+
                 <div class="circle" id="newyorkk"><button type="button" class="mapbut" onclick=showNewyork()></button></div>
                 <div class="circle" id="monacoo"><button type="button" class="mapbut" onclick=showMonaco()></button></div>
                 <div class="circle" id="dubaii"><button type="button" class="mapbut" onclick=showDubai()></button></div>
@@ -462,67 +476,70 @@
                     <button type="button" id="apply_settings" onclick="apply()">Apply</button>
                 </div>
             </div>
-            <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+            <div>
                 <h1 class="title">Experiences</h1>
-                <br>
-                <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
-                    <li class="experiencecell" id="sortable1">
-                        <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
-                        <h2 onclick=showDubai()>Dubai</h2>
-                        <p class="description">An Oasis in the middle of the dessert</p>
-                    </li>
-                    <li class="experiencecell" id="sortable2">
-                        <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
-                        <h2 onclick=showMonaco()>Monaco</h2>
-                        <p class="description">Casinos, yachts and automobiles</p>
-                    </li>
-                    <li class="experiencecell" id="sortable3">
-                        <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>New York</h2>
-                        <p class="description">The city that never sleeps</p>
-                    </li>
-                </ul>
-                <ul class="row" id="sortablerow2">
-                    <li class="experiencecell" id="sortable4">
-                        <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Moscow</h2>
-                        <p class="description">City of parks and hospitality</p>
-                    </li>
-                    <li class="experiencecell" id="sortable5">
-                        <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Paris</h2>
-                        <p class="description">City of light</p>
-                    </li>
-                    <li class="experiencecell" id="sortable6">
-                        <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>San Francisco</h2>
-                        <p class="description">Modern vs victorian architecture</p>
-                    </li>
-                </ul>
-                <ul class="row" id="sortablerow3">
-                    <li class="experiencecell" id="sortable7">
-                        <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Tokyo</h2>
-                        <p class="description">Cyberpunk in real life</p>
-                    </li>
-                    <li class="experiencecell" id="sortable8">
-                        <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Madrid</h2>
-                        <p class="description">Charming medieval city</p>
-                    </li>
-                    <ul class="experiencecell" id="sortable9">
-                        <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Sydney</h2>
-                        <p class="description">Luxury near the wild</p>
-                    </li>
-                </ul>
+                <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+                    
+                    <br>
+                    <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
+                        <li class="experiencecell" id="sortable1">
+                            <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
+                            <h2 onclick=showDubai()>Dubai</h2>
+                            <p class="description">An Oasis in the middle of the dessert</p>
+                        </li>
+                        <li class="experiencecell" id="sortable2">
+                            <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
+                            <h2 onclick=showMonaco()>Monaco</h2>
+                            <p class="description">Casinos, yachts and automobiles</p>
+                        </li>
+                        <li class="experiencecell" id="sortable3">
+                            <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>New York</h2>
+                            <p class="description">The city that never sleeps</p>
+                        </li>
+                    </ul>
+                    <ul class="row" id="sortablerow2">
+                        <li class="experiencecell" id="sortable4">
+                            <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Moscow</h2>
+                            <p class="description">City of parks and hospitality</p>
+                        </li>
+                        <li class="experiencecell" id="sortable5">
+                            <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Paris</h2>
+                            <p class="description">City of light</p>
+                        </li>
+                        <li class="experiencecell" id="sortable6">
+                            <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>San Francisco</h2>
+                            <p class="description">Modern vs victorian architecture</p>
+                        </li>
+                    </ul>
+                    <ul class="row" id="sortablerow3">
+                        <li class="experiencecell" id="sortable7">
+                            <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Tokyo</h2>
+                            <p class="description">Cyberpunk in real life</p>
+                        </li>
+                        <li class="experiencecell" id="sortable8">
+                            <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Madrid</h2>
+                            <p class="description">Charming medieval city</p>
+                        </li>
+                        <ul class="experiencecell" id="sortable9">
+                            <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Sydney</h2>
+                            <p class="description">Luxury near the wild</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </main>
     <br>
     <footer>
         <div class="logocontainer"> <!--Class for the webpage logo-->
-            <img src="images/neotravellogo.png" alt="neotravellogo" class="footerimg">
+            <img src="images/neotravellogo.jpg" alt="neotravellogo" class="footerimg">
         </div>
         <div class="footnav"> <!--Menu implemented  but not redirected to any page, to be implemented in future steps-->
             <a class="menus" href="#FAQs">FAQs</a>
