@@ -416,6 +416,62 @@
                 <div class="searchbar">
                     <input type="searchbar" id="searchbar" placeholder="Search.." name="Searchbar">
                     <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" ></i></button> <!--Image for the search button taken from a external source-->
+                    <button type="button" name="filterbutton" onclick=filters()>Filters</button>
+                    <button type="button" name="settingbutton" onclick=settings()>Settings</button>
+                </div>
+                <div id="filters">
+                    <h4>Search by ...</h4>
+                    <p class="filter" id='exp_name' onclick=filter1()>&#9898; experience's name</p>
+                    <p class="filter" id='author' onclick=filter2()>&#9898; author</p>
+                    <div class="filter">
+                        <p id="interest" onclick=filter3()>&#9898; interests</p>
+                        <select name="interests" id="int_options">
+                            <option value="">--Please choose one or more option(s)--</option>
+                            <option value="nature">Nature</option>
+                            <option value="food">Food</option>
+                            <option value="history">History</option>
+                            <option value="capital">Capital</option>
+                            <option value="sport">Sport</option>
+                            <option value="art">Art</option>
+                            <option value="leisure">Party/Lesiure</option>
+                        </select>                        
+                    </div>
+                    <button type="button" id='apply_filters' onclick="apply()">Apply</button>
+                </div>
+                <div id="settings">
+                    <h4 id="budget-section">Budget per person : 2 500€</h4>
+                    <div class='budget-bar'>
+                        <p class='setting_bar'>0€</p>
+                        <input id='budget' type='range' min='0' max='5000' oninput=budget_cursor()>
+                        <p class='setting_bar'>5000€</p>
+                    </div>
+                    <h4 id="distance-section">Distance : 6 000 km</h4>
+                    <select name="country" id="country" onclick="if(document.getElementById('country').value == 'france'){
+                        document.getElementById('french_cities').style.display = 'block'}else{document.getElementById('french_cities').style.display = 'none'}">
+                        <option value="">--Please select your home country--</option>
+                        <option value="france">France</option>
+                        <option value="spain">España</option>
+                        <option value="england">England</option>
+                        <option value="germany">Deutschland</option>
+                        <option value="usa">USA</option>
+                        <option value="italy">Italia</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="portugal">Portugal</option>
+                    </select>
+                    <select name="french_cities" id="french_cities">
+                        <option value="">--Please select your home city--</option>
+                        <option value="paris">Paris</option>
+                        <option value="lyon">Lyon</option>
+                        <option value="marseille">Marseille</option>
+                        <option value="bordeaux">Bordeaux</option>
+                    </select>
+                    <div class='distance-bar'>
+                        <p class='setting_bar'>0 km</p>
+                        <input id='distance' type='range' min='0' max='20000' oninput=distance_cursor()>
+                        <p class='setting_bar'>20 000 km</p>
+                    </div>
+                    <button type="button" id="apply_settings" onclick="apply()">Apply</button>
                 </div>
             </div>
             <div>
