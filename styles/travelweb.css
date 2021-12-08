@@ -89,11 +89,11 @@ header img {
 	display: none;
 }
 
-#usernamespace {
-	color: indianred;
-	font-family: cursive;
-	font-style: italic;
-	font-size: 20px;
+#usernamespace{
+  color:aqua;
+  font-family:cursive;
+  font-style:italic;
+  font-size:20px;
 }
 /*Body settings*/
 
@@ -327,6 +327,66 @@ input[name="Searchbar"] {
 	width: 60%;
 }
 
+
+#filters{
+	background-color: rgb(209, 209, 209);
+	color:rgb(39, 39, 39);
+	padding-left: 1%;
+	padding-bottom: 1%;
+	display: none;
+  }
+  
+  
+#settings{
+	background-color: rgb(209, 209, 209);
+	color:rgb(39, 39, 39);
+	padding-left: 1%;
+	padding-bottom: 1%;
+	display: none;
+  }
+  
+  .filter {
+	float: left;
+	color:rgb(39, 39, 39);
+	width: 30%;
+  }
+  
+  #interest{
+	color:rgb(39, 39, 39);
+  }
+  
+  #french_cities{
+	display: none;
+  }
+  
+  #int_options{
+	display: none;
+	color:rgb(39, 39, 39);
+  }
+
+  
+p.setting_bar{
+	float: left;
+	color:rgb(39, 39, 39);
+	width: 10%;
+	text-align: center;
+  }
+  
+  #distance{
+	float: left;
+	width: 75%;
+  }
+  
+  #budget{
+	float: left;
+	width: 75%;
+  }
+  
+  .budget-bar::after{
+	content: "";
+	clear: both;
+	display: table;
+  }
 .exploresection {
 	/*Setting the explore section to 80% of the total webpage width*/
 	margin-left: 10%;
