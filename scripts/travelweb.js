@@ -1,3 +1,5 @@
+let loggedUser = null;
+
 //Functions for the header section
 //Cookies for login
 function openLoginForm(){
@@ -10,37 +12,37 @@ function closeLoginForm(){
 }
 
 function login(){
-    var elements = document.getElementById("loginForm");
-    var username = elements[0].value;
-    var password = elements[1].value;
-    var cookie_username = getCookie("username");
-    var cookie_password = getCookie("password");
+    var form = document.getElementById("loginForm");
+    const data = new FormData(form);
+
+    const savedUser = localStorage.getItem("user-" + data.get("username"));
+
+    if (!savedUser) {
+        alert("No account exists with this username")
+    } else {
+        const savedData = JSON.parse(savedUser);
+        if (savedData.password !== data.get("password")) {
+            alert("Wrong password")
+        } else {
+            console.log(savedData)
+            loggedUser = savedData
+            document.getElementById("notLogged").style.display = "none";
+            document.getElementById("notLogged2").style.display = "none";
+            document.getElementById("menuLogged").style.display = "block";
+            document.getElementById("profileimageimg").style.display="block";
+            document.getElementById("requireLoginSection").style.display = "block";
+            document.getElementById("usernamespace").style.color="aqua";
+            document.getElementById("profileimageimg").src = savedData.photito
+            document.getElementById("usernamespace").innerHTML = savedData.username
+            closeLoginForm()
+        }
+    }
+
     if (cookie_username == username && cookie_password == password) {
-        document.getElementById("notLogged").style.display = "none";
-        document.getElementById("notLogged2").style.display = "none";
-        document.getElementById("profileimageimg").style.display="block";
-        document.getElementById("requireLoginSection").style.display = "block";
-        document.getElementById("usernamespace").style.color="indianred";
-        document.getElementById("profileimageimg").src = getCookie("photito")
-        document.getElementById("usernamespace").innerHTML = getCookie("username");
-        closeLoginForm()
+        
         console.log("hola")
     }else{
         alert("Wrong username or pass");
-    }
-}
-
-function getCookie(nameCookie){
-    var nameCookieComp= nameCookie + "=";
-    var ca = document.cookie.split(';');
-    for (var i=0; i<ca.length; i++){
-        var cook = ca[i];
-        while (cook.charAt(0) == ' '){
-            cook = cook.substring(1);
-        }
-        if (cook.indexOf(nameCookieComp) == 0){
-            return cook.substring(nameCookieComp.length, cook.length);
-        }
     }
 }
 
@@ -54,15 +56,15 @@ function closeMyExperiences(){
 
 function openMyProfile(){
     document.getElementById("myProfile").style.display="block";
-    document.getElementById("usernameprof").innerHTML = getCookie("username");
-    document.getElementById("passwordprof").innerHTML = getCookie("password");
-    document.getElementById("nameprof").innerHTML = getCookie("name");
-    document.getElementById("surnameprof").innerHTML = getCookie("surname");
-    document.getElementById("usernameprof").innerHTML = getCookie("username");
-    document.getElementById("emailprof").innerHTML = getCookie("email");
-    document.getElementById("birthprof").innerHTML = getCookie("date");
-    document.getElementById("interestprof").innerHTML = getCookie("interests");
-    document.getElementById("profilephotoprof").src = getCookie("photito");
+    document.getElementById("usernameprof").innerHTML = loggedUser.username;
+    document.getElementById("passwordprof").innerHTML = loggedUser.password;
+    document.getElementById("nameprof").innerHTML = loggedUser.name;
+    document.getElementById("surnameprof").innerHTML = loggedUser.surname;
+    document.getElementById("usernameprof").innerHTML = loggedUser.username;
+    document.getElementById("emailprof").innerHTML = loggedUser.email;
+    document.getElementById("birthprof").innerHTML = loggedUser.date;
+    document.getElementById("interestprof").innerHTML = loggedUser.interests;
+    document.getElementById("profilephotoprof").src = loggedUser.photito;
 }
 
 function openChangeUsername(){
@@ -71,14 +73,7 @@ function openChangeUsername(){
 function closeChangeUsername(){
     document.getElementById("changeUsername").style.display="none";
 }
-function changeUsername(){
-    var elements = document.getElementById("userchange");
-    cookie = elements[1].name + "=" + elements[1].value;
-    document.cookie = cookie;
-    document.getElementById("usernameprof").innerHTML = getCookie("username");
-    document.getElementById("usernamespace").innerHTML = getCookie("username");
-    closeChangeUsername();
-}
+
 
 function openChangeInterest(){
     document.getElementById("changeInterest").style.display = "block";
@@ -88,9 +83,12 @@ function closeChangeInterest(){
 }
 function changeInterest(){
     var elements = document.getElementById("intchange");
-    cookie = elements[1].name + "=" + elements[1].value;
-    document.cookie = cookie;
-    document.getElementById("interestprof").innerHTML = getCookie("interests");
+    const newUser = {...loggedUser, interests: elements[1].value};
+
+    localStorage.setItem("user-" + loggedUser.username, JSON.stringify(newUser));
+    loggedUser = newUser;
+
+    document.getElementById("interestprof").innerHTML = loggedUser.interests;
     closeChangeInterest();
 }
 
@@ -102,11 +100,12 @@ function closeChangeProfileImage(){
 }
 function changeProfileImage(){
     var elements = document.getElementById("imageprofchange");
-    console.log(elements);
-    cookie = elements[1].name + "=" + elements[1].value;
-    document.cookie = cookie;
-    document.getElementById("profilephotoprof").src = getCookie("photito");
-    document.getElementById("profileimageimg").src = getCookie("photito");
+    const newUser = {...loggedUser, photito: elements[1].value};
+
+    localStorage.setItem("user-" + loggedUser.username, JSON.stringify(newUser));
+    loggedUser = newUser;
+    document.getElementById("profilephotoprof").src = loggedUser.photito;
+    document.getElementById("profileimageimg").src = loggedUser.photito;
     closeChangeProfileImage();
 }
 
@@ -154,27 +153,35 @@ function closeSignupForm(){
 }
 
 function signup(){
-    document.cookie=""
     if (document.getElementById("terms").checked){
-        var elements = document.getElementById("signup");
-        var cookie = "";
-        var email = elements[5].value;
-        if (document.cookie.includes("email=" + email)){
+        var form = document.getElementById("signup");
+
+        const data = new FormData(form);
+        console.log(data)
+
+
+        if (localStorage.getItem("user-" + data.get("username"))) {
             alert("Account already created");
-        }else{
-            for(var i=1; i<elements.length;i++){
-                cookie = elements[i].name + "=" + elements[i].value;
-                document.cookie = cookie;
+        } else{
+            const user = {};
+
+            for(const key of data.keys()) {
+                user[key] = data.get(key);     
             }
+
+            console.log(user);
+
+            localStorage.setItem("user-" + data.get("username"), JSON.stringify(user));
             alert("Account created");
             document.getElementById("notLogged").style.display = "none";
             document.getElementById("notLogged2").style.display = "none";
             document.getElementById("menuLogged").style.display = "block";
             document.getElementById("requireLoginSection").style.display = "block";
-            document.getElementById("profileimageimg").src = elements[9].value;
-            document.getElementById("usernamespace").innerHTML = elements[1].value;
+            document.getElementById("profileimageimg").src = data.get("photito")
+            document.getElementById("usernamespace").innerHTML = data.get("username");
             document.getElementById("profileimageimg").style.display="block";
             closeSignupForm();
+            loggedUser = user;
         }
     }else{
         alert("Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy")
@@ -204,6 +211,7 @@ function logout(){
     document.getElementById("logoutPopup").style.display = "none";
     document.getElementById("usernamespace").style.color="black";
     document.getElementById("profileimageimg").style.display="none";
+    loggedUser = null;
 }
 
 //Functions for the search bar
@@ -474,4 +482,18 @@ function deleteExperience(el) {
     var x = confirm("Are you sure you want to delete?");
     if (x)
         el.parentNode.parentNode.style.display = 'none';
+}
+
+function addComment(){
+    const commentText = document.getElementById("newComment").value
+    const commentsContainer = document.getElementById("allComments")
+
+    const comment = document.createElement("div");
+    comment.classList.add("comment");
+
+    const p = document.createElement("p");
+    p.innerText = commentText;
+    comment.appendChild(p);
+
+    commentsContainer.appendChild(comment);    
 }
