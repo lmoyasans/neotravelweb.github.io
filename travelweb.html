@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Includes the images for the search button and the social media links-->
     <title>Neotravel</title>
     <script src="scripts/travelweb.js"></script>
+    <script src="scripts/addcomments.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 </head>
@@ -47,6 +48,21 @@
         </div>
     </header>
     <main>
+        <div id="myPopupShare" class="popupshare">
+            <!-- Popup content -->
+            <div class="popup-content">
+                <span class="close_popup" onclick="closePopup()">&times;</span>
+                <p>Would you like to share</p>
+                <div class="share" style="text-align: center">
+                    <a href="https://www.facebook.com/sharer.php?u=google.com" target="https://www.google.com"
+                        class="fa fa-facebook"></a>
+                    <a href="http://twitter.com/share?text=Check out my webpage! &url=http://google.com"
+                        class="fa fa-twitter"></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=google.com&title=LinkedIn%20Developer%20Network&summary=My%20favorite%20developer%20program&source=LinkedIn"
+                        class="fa fa-linkedin"></a>
+                </div>
+            </div>
+        </div>
         <div class="popup" id="dubai"> <!--Content that replaces the map, search area en explore when dubai point or option in the topnav is clicked-->
             <button type="button" id="closePop" onclick=closeDubai()>Close</button>
             <div class="imagepop">
@@ -315,6 +331,12 @@
                     <h2>Dubai</h2>
                     <p class="description">An Oasis in the middle of the dessert</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -323,6 +345,12 @@
                     <h2>Monaco</h2>
                     <p class="description">Casinos, yachts and automobiles</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -331,6 +359,12 @@
                     <h2>New York</h2>
                     <p class="description">The city that never sleeps</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -339,6 +373,12 @@
                     <h2 onclick=showNewyork()>Moscow</h2>
                     <p class="description">City of parks and hospitality</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -347,6 +387,12 @@
                     <h2 onclick=showNewyork()>Paris</h2>
                     <p class="description">City of light</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -355,6 +401,12 @@
                     <h2 onclick=showNewyork()>San Francisco</h2>
                     <p class="description">Modern vs victorian architecture</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -363,6 +415,12 @@
                     <h2 onclick=showNewyork()>Tokyo</h2>
                     <p class="description">Cyberpunk in real life</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -371,6 +429,12 @@
                     <h2 onclick=showNewyork()>Madrid</h2>
                     <p class="description">Charming medieval city</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
@@ -379,6 +443,12 @@
                     <h2 onclick=showNewyork()>Sydney</h2>
                     <p class="description">Luxury near the wild</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
         </div>
@@ -486,16 +556,34 @@
                             <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
                             <h2 onclick=showDubai()>Dubai</h2>
                             <p class="description">An Oasis in the middle of the dessert</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                         <li class="experiencecell" id="sortable2">
                             <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
                             <h2 onclick=showMonaco()>Monaco</h2>
                             <p class="description">Casinos, yachts and automobiles</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                         <li class="experiencecell" id="sortable3">
                             <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>New York</h2>
                             <p class="description">The city that never sleeps</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                     </ul>
                     <ul class="row" id="sortablerow2">
@@ -503,16 +591,34 @@
                             <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>Moscow</h2>
                             <p class="description">City of parks and hospitality</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                         <li class="experiencecell" id="sortable5">
                             <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>Paris</h2>
                             <p class="description">City of light</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                         <li class="experiencecell" id="sortable6">
                             <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>San Francisco</h2>
                             <p class="description">Modern vs victorian architecture</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                     </ul>
                     <ul class="row" id="sortablerow3">
@@ -520,19 +626,43 @@
                             <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>Tokyo</h2>
                             <p class="description">Cyberpunk in real life</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                         <li class="experiencecell" id="sortable8">
                             <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>Madrid</h2>
                             <p class="description">Charming medieval city</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                         <ul class="experiencecell" id="sortable9">
                             <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
                             <h2 onclick=showNewyork()>Sydney</h2>
                             <p class="description">Luxury near the wild</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
                         </li>
                     </ul>
                 </div>
+            </div>
+            <div class="container">
+                <label for="newComment" name="newComment">Add your comment below-</label>
+                <textarea id="newComment"></textarea>
+                <button id="addComments" onclick=addComment()>Add Comment</button>
+                <div id="allComments"></div>
             </div>
         </div>
     </main>

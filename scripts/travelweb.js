@@ -18,7 +18,6 @@ function login(){
     if (cookie_username == username && cookie_password == password) {
         document.getElementById("notLogged").style.display = "none";
         document.getElementById("notLogged2").style.display = "none";
-        document.getElementById("menuLogged").style.display = "block";
         document.getElementById("profileimageimg").style.display="block";
         document.getElementById("requireLoginSection").style.display = "block";
         document.getElementById("usernamespace").style.color="indianred";
@@ -155,6 +154,7 @@ function closeSignupForm(){
 }
 
 function signup(){
+    document.cookie=""
     if (document.getElementById("terms").checked){
         var elements = document.getElementById("signup");
         var cookie = "";
@@ -163,9 +163,8 @@ function signup(){
             alert("Account already created");
         }else{
             for(var i=1; i<elements.length;i++){
-                new_user_data =
-                cookie = elements[i].name + ":" + elements[i].value;
-                document.cookie = cookie
+                cookie = elements[i].name + "=" + elements[i].value;
+                document.cookie = cookie;
             }
             alert("Account created");
             document.getElementById("notLogged").style.display = "none";
@@ -233,6 +232,25 @@ function filters(){
     }else{
         document.getElementById("filters").style.display = "block";
     }
+}
+
+function like(el) {
+    if(el.parentElement.style.backgroundColor =="darkslategray"){
+        el.parentElement.style.backgroundColor = "black"
+    }else{
+        el.parentElement.style.backgroundColor = "darkslategray"
+    }
+    
+}
+function popup(parent) {
+    var popup = document.getElementById("myPopupShare")
+    popup.style.display = "block"
+    var title = parent.children[1].innerText
+    popup.children[0].children[1].innerHTML = "Would you like to share " + title + "?"
+}
+function closePopup() {
+    var popup = document.getElementById("myPopupShare")
+    popup.style.display = "none"
 }
 
 function apply(){

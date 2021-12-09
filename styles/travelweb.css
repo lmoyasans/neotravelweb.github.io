@@ -572,6 +572,15 @@ footer img {
 	width: 10vh;
 }
 
+.popupshare {
+	display: None;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+}
+
 /*Responsiveness for different resolution devices*/
 
 @media screen and (max-width: 680px) {
@@ -624,4 +633,45 @@ footer img {
 		/*Reduction of the top nav logo to fit with smaller spaces*/
 		height: 70px;
 	}
+}
+
+/*add comment section*/
+* {
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input[type=text]:invalid {
+    border: aqua solid 1px;
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25vw;
+	margin-right:25vw
+}
+.container > label {
+   text-align: center;
+}
+#comment{
+    background-color: cornflowerblue;
+}
+#addComments {
+    width: 20%;
+    padding: 5px;
+    background-color: darkblue;
+    color: white;
+    align-self: center;
+}
+
+.wrapper > button {
+    margin-right: 5px;
+    padding: 5px;
+    background-color: darkblue;
+    color: white;
 }
