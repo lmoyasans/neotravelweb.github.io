@@ -17,13 +17,17 @@ function login(){
 
     const savedUser = localStorage.getItem("user-" + data.get("username"));
 
-    if (!savedUser) {
+    if (!savedUser) 
+    {
         alert("No account exists with this username")
-    } else {
+    } else 
+    {
         const savedData = JSON.parse(savedUser);
-        if (savedData.password !== data.get("password")) {
+        if (savedData.password !== data.get("password")) 
+        {
             alert("Wrong password")
-        } else {
+        } else 
+        {
             console.log(savedData)
             loggedUser = savedData
             document.getElementById("notLogged").style.display = "none";
@@ -34,16 +38,21 @@ function login(){
             document.getElementById("usernamespace").style.color="aqua";
             document.getElementById("profileimageimg").src = savedData.photito
             document.getElementById("usernamespace").innerHTML = savedData.username
+            var fav = document.getElementsByClassName("favourites");
+            for(i=0; i<fav.length; i++) {
+              fav[i].style.display = "block";
+          }
             closeLoginForm()
-        }
     }
+}
 
-    if (cookie_username == username && cookie_password == password) {
-        
-        console.log("hola")
-    }else{
-        alert("Wrong username or pass");
-    }
+
+function openMyCollection(){
+    document.getElementById("myCollection").style.display="block";
+}
+
+function closeMyCollection(){
+    document.getElementById("myCollection").style.display="none";
 }
 
 function openMyExperiences(){
@@ -240,6 +249,33 @@ function filters(){
     }else{
         document.getElementById("filters").style.display = "block";
     }
+}
+
+
+function favourite(f){
+    var element = f;
+    var exp = f.parentNode.id;
+    alert(document.getElementById(exp).innerHTML);
+    if ((f.src).substring(f.src.length - 15, f.src.length) == "images/favs.png"){
+        f.src = "images/faved.png";
+        var z = document.getElementById(exp).getElementsByTagName('img');
+        document.getElementById("myCollectionContent").innerHTML += '<div class="experiencecell" id="c'+ exp + '><img src="'+z[0].src+'">' + document.getElementById(exp).innerHTML + '</div>';
+        //document.getElementById(exp).innerHTML += '<img src="images/faved.png" style="width: 13%; display: none;" title="Delete from favourites">';
+    }
+    else{
+        f.src = "images/favs.png";
+        var collections = document.getElementById("myCollectionContent").getElementsByClassName("experiencecell");
+        
+        for (var l = 0; l < collections.length;l++){
+            alert((collections[l].id).substring(1, 10));
+            alert(exp);
+            if ((collections[l].id).substring(1, 10) == exp){
+                collections[l].remove();
+
+            }
+        }
+    }
+    
 }
 
 function like(el) {

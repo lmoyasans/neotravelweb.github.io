@@ -1,0 +1,700 @@
+/*General settings for the whole web*/
+:root {
+	/* Implements the automatic dark mode*/
+	color-scheme: light dark;
+}
+body {
+	background-color: black;
+}
+
+/*General settings for the fonts*/
+h1 {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-variant: small-caps;
+	font-style: italic;
+	font-size: 200%;
+	color: white;
+}
+
+h2 {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-style: normal;
+	font-variant: small-caps;
+	color: white;
+}
+
+p {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+	font-style: oblique;
+	font-variant: small-caps;
+	color: white;
+}
+
+/*Header general settings and settings for each of the subparts*/
+
+button {
+	/*Personalization of buttons style*/
+	background-color: black;
+	color: white;
+	border-radius: 100px;
+	padding: 15px;
+	font-size: 1.37vw;
+	font-family: cursive;
+	font-style: italic;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	height: 2%;
+	align-items: center;
+}
+
+header img {
+	height: 100px;
+}
+
+
+.topnav {
+	justify-content: space-evenly;
+	margin: auto;
+	text-align: center;
+}
+
+.topnav a {
+	/*Introduce space between the different options of the top navigator*/
+	padding: 12px;
+	font-size: 2vw;
+}
+
+.buttons {
+	/**Referred to the header buttons only*/
+	text-align: right;
+}
+
+#menuLogged {
+	justify-content: space-evenly;
+	margin: auto;
+	text-align: center;
+	padding: 12px;
+	font-size: 15px;
+}
+
+.menus {
+	/*Color and style of both top and bottom menus*/
+	text-decoration: none;
+	color: aqua;
+	font-family: cursive;
+	font-style: italic;
+	cursor: pointer;
+}
+
+.requireLoginSection {
+	display: none;
+}
+
+#usernamespace {
+	color: indianred;
+	font-family: cursive;
+	font-style: italic;
+	font-size: 20px;
+}
+/*Body settings*/
+
+#logoutPopup {
+	display: none;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+	color: white;
+}
+
+#popupAddExperience {
+	display: none;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+	height: 15vw;
+	color: white;
+	overflow: auto;
+}
+
+#newyork {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#myProfile {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	color: white;
+	justify-content: center;
+}
+
+#myCollection {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	color: white;
+	justify-content: center;
+}
+
+.content {
+	padding-left: 5vw;
+}
+
+#monaco {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#dubai {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+.profilepopup {
+	display: none;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+	overflow: auto;
+	color: white;
+}
+
+.modal {
+	display: none;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+	overflow: auto;
+	color: white;
+}
+.imagepop img {
+	width: 100%;
+}
+/*Login popup*/
+.form {
+	display: none;
+	overflow: auto;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+}
+
+/* Map */
+
+#map-container {
+	position: relative;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.mapimage {
+	position: relative;
+	width: 100%;
+	height: auto;
+}
+
+.circle {
+	position: absolute;
+	object-fit: cover;
+	display: block;
+	height: 15%;
+	width: 7%;
+	background-color: Transparent;
+}
+
+.mapbut {
+	width: 100%;
+	height: 100%;
+	background-color: Transparent;
+	background-repeat: no-repeat;
+	border: none;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+#newyorkk {
+	left: 24%;
+	top: 35.5%;
+}
+
+#monacoo {
+	left: 47%;
+	top: 31%;
+}
+
+#dubaii {
+	left: 59%;
+	top: 42%;
+}
+
+/* this part needed so the popups are not under the map and all map-button still work*/
+main > * {
+	z-index: 1;
+}
+
+#home {
+	z-index: -1;
+}
+/*  */
+
+.hamburger-menu {
+	height: 100%;
+	float: left;
+	display: block;
+}
+
+#hamburguer-img {
+	width: 3vw;
+	height: 3vw;
+}
+
+.drop-down {
+	/*Set a high z-index so that the drop-down menu is presented above the rest of the content*/
+	z-index: 100;
+	margin-left: 1%;
+	position: absolute;
+	background-color: black;
+	top: 35 vw;
+	display: none;
+}
+
+.drop-down a {
+	color: white;
+	font-size: 1.5vw;
+}
+
+.hamburguer-menu:hover .drop-down {
+	max-height: 50vh;
+	display: block;
+}
+
+#myExperiences {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid black;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+}
+
+.title {
+	display: flex;
+	justify-content: center;
+}
+
+.searcharea {
+	/*Setting the set area to 80% of the total width of the webpage*/
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.searchbar {
+	display: flex;
+	justify-content: center;
+}
+
+input[name="Searchbar"] {
+	width: 60%;
+}
+
+
+#filters{
+	background-color: rgb(209, 209, 209);
+	color:rgb(39, 39, 39);
+	padding-left: 1%;
+	padding-bottom: 1%;
+	display: none;
+  }
+  
+  
+#settings{
+	background-color: rgb(209, 209, 209);
+	color:rgb(39, 39, 39);
+	padding-left: 1%;
+	padding-bottom: 1%;
+	display: none;
+  }
+  
+  .filter {
+	float: left;
+	color:rgb(39, 39, 39);
+	width: 30%;
+  }
+  
+  #interest{
+	color:rgb(39, 39, 39);
+  }
+  
+  #french_cities{
+	display: none;
+  }
+  
+  #int_options{
+	display: none;
+	color:rgb(39, 39, 39);
+  }
+
+  
+p.setting_bar{
+	float: left;
+	color:rgb(39, 39, 39);
+	width: 10%;
+	text-align: center;
+  }
+  
+  #distance{
+	float: left;
+	width: 75%;
+  }
+  
+  #budget{
+	float: left;
+	width: 75%;
+  }
+  
+  .budget-bar::after{
+	content: "";
+	clear: both;
+	display: table;
+  }
+.exploresection {
+	/*Setting the explore section to 80% of the total webpage width*/
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	display: table;
+	justify-content: center;
+}
+
+.row {
+	/*Including margin to make sure that the images are aligned to the center*/
+	margin: 0.01%;
+	display: flex;
+	justify-content: center;
+}
+
+.experiencecell {
+	/*Setting the images to be 3 per row (33.33% of the width of the row)*/
+	width: 33.33%;
+	float: left;
+	justify-content: center;
+	display: table-cell;
+	border-color: oldlace;
+	border-style: groove;
+	padding: 10px;
+	height: 50%;
+}
+.experiencecard {
+	width: 33.33%;
+	float: left;
+	justify-content: center;
+	display: inline;
+	border-color: oldlace;
+	border-style: groove;
+	padding: 10px;
+	height: 50%;
+}
+.experiencecard img {
+	margin: 10%;
+	width: 80%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+}
+.experiencecard h2 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/*Settings for the contents of the experiences cells*/
+
+.experiencecell img {
+	margin: 10%;
+	width: 80%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+}
+
+.experiencecell h2 {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/*Settings for dubai, new york and dubai pages*/
+
+.photovideos {
+	/*Settings for the images and videos (5 column-2 rows)*/
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	display: table;
+	justify-content: center;
+}
+
+.description {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+.content h1 {
+	margin-left: 10%;
+	margin-right: 10%;
+	width: 80%;
+	display: flex;
+	justify-content: center;
+}
+.content p {
+	width: 80%;
+	margin-left: 10%;
+	margin-right: 10%;
+}
+
+.fivecolumnrow {
+	/*Settings for the images and videos (5 column-2 rows)*/
+	display: flex;
+	justify-content: center;
+}
+
+iframe {
+	/*Information of the sixe of the videos*/
+	width: 560;
+	height: 315;
+}
+
+.cell {
+	/*Settings for the images and videos (5 column-2 rows)*/
+	width: 20%;
+	float: left;
+	display: table-cell;
+	justify-content: center;
+	border-color: oldlace;
+	border-style: groove;
+}
+
+.cell iframe {
+	/*Settings for the images and videos (5 column-2 rows)*/
+	margin: 10%;
+	width: 80%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+}
+
+.cell img {
+	/*Settings for the images and videos (5 column-2 rows)*/
+	margin: 10%;
+	width: 80%;
+	height: 70%;
+	display: flex;
+	justify-content: center;
+}
+
+/*Footer settings*/
+
+footer {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.socialmedia {
+	flex-basis: 33.33%;
+	text-align: right;
+	padding: 10px;
+}
+
+.socialmedia a {
+	font-size: 2vw;
+}
+
+.footnav {
+	display: flex;
+	flex-basis: 33.33%;
+	justify-content: space-between;
+	margin: auto;
+}
+.footnav a {
+	margin: auto;
+	padding: 12px;
+	font-size: 2vw;
+}
+
+.fa {
+	/*Personalization of the social media icons style*/
+	width: 50px;
+	text-decoration: none;
+	background: black;
+	color: white;
+}
+
+footer img {
+	height: 100px;
+	margin-right: 20vw;
+	width: 15vw;
+}
+
+.popup {
+	height: 10vh;
+	width: 10vh;
+}
+
+.popupshare {
+	display: None;
+	position: fixed;
+	background-color: darkslategray;
+	border: 2px solid white;
+	width: 50vw;
+	margin-left: 25vw;
+}
+
+/*Responsiveness for different resolution devices*/
+
+@media screen and (max-width: 680px) {
+	/*Responsiveness of the webpage for mobile devices*/
+	.row {
+		display: table;
+		justify-content: center;
+	}
+	.exploresection {
+		margin-right: 10%;
+		margin-left: 10%;
+		width: 80%;
+		display: table;
+		justify-content: center;
+	}
+	.experiencecell {
+		/*Change the experiences matrix to one column*/
+		border-color: transparent; /*Elimination of the border color to avoid excess of visual information in smaller devices*/
+		margin: auto;
+		width: 100%;
+		display: space-between;
+		justify-content: center;
+	}
+	.logocontainer img {
+		/*Reduction of the top nav logo to fit with smaller spaces*/
+		height: 70px;
+	}
+}
+
+@media screen and (max-width: 1024px) and (min-width: 681px) {
+	/*Responsiveness of the webpage for tablets*/
+	.row {
+		display: flex;
+	}
+	.exploresection {
+		margin-right: 10%;
+		margin-left: 10%;
+		width: 80%;
+		display: table;
+	}
+	.experiencecell {
+		/*Elimination of the border color to avoid excess of visual information in smaller devices*/
+		border-color: transparent;
+		margin: auto;
+		display: table-cell;
+		padding: 0px;
+		float: none;
+	}
+	.logocontainer img {
+		/*Reduction of the top nav logo to fit with smaller spaces*/
+		height: 70px;
+	}
+}
+
+/*add comment section*/
+* {
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+input[type=text]:invalid {
+    border: aqua solid 1px;
+}
+
+.container {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 25vw;
+	margin-right:25vw
+}
+.container > label {
+   text-align: center;
+}
+#comment{
+    background-color: cornflowerblue;
+}
+#addComments {
+    width: 20%;
+    padding: 5px;
+    background-color: darkblue;
+    color: white;
+    align-self: center;
+}
+
+.wrapper > button {
+    margin-right: 5px;
+    padding: 5px;
+    background-color: darkblue;
+    color: white;
+}
+
