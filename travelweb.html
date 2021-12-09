@@ -8,19 +8,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"> <!--Includes the images for the search button and the social media links-->
     <title>Neotravel</title>
     <script src="scripts/travelweb.js"></script>
+    <script src="scripts/addcomments.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
+        <div class=hamburguer-menu>
+            <img id="hamburguer-img" src="images/menu.png" alt="hamburguer-menu-img">
+            <div class="drop-down">
+                <a href="#home">Home</a><br>
+                <a href="#about-us">About us</a><br>
+                <a href="#help">Help</a><br>
+                <a href="#faq">FAQs</a><br>
+                <a href="#terms">Terms of Use</a><br>
+              </div>
+        </div>
         <div class="logocontainer"> <!--Class for the webpage logo-->
-            <img src="images/neotravellogo.png" alt="neotravellogo">
+            <img src="images/neotravellogo.jpg" alt="neotravellogo">
         </div>
         <div class="topnav"> <!-- Header navigator with the links to the three main experiences that are also in the map, and the home button to return to the initial page-->
             <a class="menus" href="#home">Home</a>
             <a class="menus" onclick=showDubai()>Dubai</a>
             <a class="menus" onclick=showMonaco()>Monaco</a>
-            <a class="menus" onclick=showDubai()>New York</a>
+            <a class="menus" onclick=showNewYork()>New York</a>
         </div>
         <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
             <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
@@ -29,14 +40,30 @@
         <div class="requireLoginSection" id="requireLoginSection">
             <div id="profileimage"><img id="profileimageimg" src="images/dubai.jpeg" alt="profile"></div>
             <div id="usernamespace"><li></li></div>
-            <div class="topnav" id="menuLogged">
-              <a class="menus" onclick=openMyProfile()>My profile</a>
-              <a class="menus" onclick=openMyExperiences()>My experiences</a>
+            <div id="menuLogged">
+              <a class="menus" onclick=openMyProfile()>My profile /</a>
+              <a class="menus" onclick=openMyCollection()>My collection /</a>
+              <a class="menus" onclick=openMyExperiences()>My experiences /</a>
               <a class="menus" onclick=openLogout()>Logout</a>
             </div>
         </div>
     </header>
     <main>
+        <div id="myPopupShare" class="popupshare">
+            <!-- Popup content -->
+            <div class="popup-content">
+                <span class="close_popup" onclick="closePopup()">&times;</span>
+                <p>Would you like to share</p>
+                <div class="share" style="text-align: center">
+                    <a href="https://www.facebook.com/sharer.php?u=google.com" target="https://www.google.com"
+                        class="fa fa-facebook"></a>
+                    <a href="http://twitter.com/share?text=Check out my webpage! &url=http://google.com"
+                        class="fa fa-twitter"></a>
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=google.com&title=LinkedIn%20Developer%20Network&summary=My%20favorite%20developer%20program&source=LinkedIn"
+                        class="fa fa-linkedin"></a>
+                </div>
+            </div>
+        </div>
         <div class="popup" id="dubai"> <!--Content that replaces the map, search area en explore when dubai point or option in the topnav is clicked-->
             <button type="button" id="closePop" onclick=closeDubai()>Close</button>
             <div class="imagepop">
@@ -237,24 +264,35 @@
             <button type="button" onclick=openChangeUsername()>Change username</button>
             <button type="button" onclick=openChangeInterest()>Change interest</button>
             <button type="button" onclick=openChangeProfileImage()>Change profile image</button>
-            <h1>My profile</h1>
-            <h2>Username:</h2>
-            <div id="usernameprof"></div>
-            <h2>Password:</h2>
-            <div id="passwordprof"></div>
-            <h2>Name: </h2>
-            <div id="nameprof"></div>
-            <h2>Surnames:</h2>
-            <div id="surnameprof"></div>
-            <h2>Email: </h2>
-            <div id="emailprof"></div>
-            <h2>Birthdate:</h2>
-            <div id="birthprof"></div>
-            <h2>Interests: </h2>
-            <div id="interestprof"></div>
-            <h2>Photo: </h2>
-            <div id="photoprof"><img src="images/dubai.jpeg" alt="profilePhoto" id="profilephotoprof"></div>
+            <div class="content">
+                <h1>My profile</h1>
+                <h2>Username:</h2>
+                <div id="usernameprof"></div>
+                <h2>Password:</h2>
+                <div id="passwordprof"></div>
+                <h2>Name: </h2>
+                <div id="nameprof"></div>
+                <h2>Surnames:</h2>
+                <div id="surnameprof"></div>
+                <h2>Email: </h2>
+                <div id="emailprof"></div>
+                <h2>Birthdate:</h2>
+                <div id="birthprof"></div>
+                <h2>Interests: </h2>
+                <div id="interestprof"></div>
+                <h2>Photo: </h2>
+                <div id="photoprof"><img src="images/dubai.jpeg" alt="profilePhoto" id="profilephotoprof"></div>
+            </div>
         </div>
+
+        <div class="requLogin" id="myCollection">
+            <button type="button" onclick=closeMyCollection()>Close</button>
+            <div class="content" id="myCollectionContent">
+                <h1>My collection</h1>
+                
+            </div>
+        </div>
+
         <div class="profilepopup" id="changeUsername">
             <h1>Introduce new username</h1>
             <form id="userchange">
@@ -298,75 +336,129 @@
             <button type="button" onclick=closeMyExperiences()>Close</button>
             <button type="button" id="addexpbut" onclick=openAddExperience()>Add new experience</button>
             <ul class="row"> <!--Experiences organized by rows-->
-                <li class="experiencecard" id="sortable1">
+                <li class="experiencecard">
                     <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showNewyork()>
                     <h2>Dubai</h2>
                     <p class="description">An Oasis in the middle of the dessert</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecard" id="sortable2">
+                <li class="experiencecard">
                     <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showNewyork()>
                     <h2>Monaco</h2>
                     <p class="description">Casinos, yachts and automobiles</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecard" id="sortable3">
+                <li class="experiencecard">
                     <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
                     <h2>New York</h2>
                     <p class="description">The city that never sleeps</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecell" id="sortable4">
+                <li class="experiencecell">
                     <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
                     <h2 onclick=showNewyork()>Moscow</h2>
                     <p class="description">City of parks and hospitality</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecard" id="sortable5">
+                <li class="experiencecard">
                     <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
                     <h2 onclick=showNewyork()>Paris</h2>
                     <p class="description">City of light</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecard" id="sortable6">
+                <li class="experiencecard">
                     <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
                     <h2 onclick=showNewyork()>San Francisco</h2>
                     <p class="description">Modern vs victorian architecture</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecell" id="sortable7">
+                <li class="experiencecell">
                     <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
                     <h2 onclick=showNewyork()>Tokyo</h2>
                     <p class="description">Cyberpunk in real life</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <li class="experiencecard" id="sortable8">
+                <li class="experiencecard">
                     <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
                     <h2 onclick=showNewyork()>Madrid</h2>
                     <p class="description">Charming medieval city</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
             <ul class="row">
-                <ul class="experiencecard" id="sortable9">
+                <ul class="experiencecard">
                     <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
                     <h2 onclick=showNewyork()>Sydney</h2>
                     <p class="description">Luxury near the wild</p>
                     <button type="button" onclick=deleteExperience(this)>Delete</button>
+                    <img src="images/like.png"
+                    alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                    <img src="images/comment.png" alt="comment button"
+                    style="width: 10%" title="Comment on this card">
+                    <img src="images/share.png" alt="share button"
+                    style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">                    
                 </li>
             </ul>
         </div>
@@ -394,7 +486,9 @@
         </div>
 
         <div class="maincontent" id="home"> <!--Section for the map, search area and experiences, hidden when clicking one of the experiences of the map or the header navigator bar-->
-            <div class="mapimage">
+            <div id="map-container">
+                <img class="mapimage" src="./images/worldmap.jpg" alt="Map of Europe">
+
                 <div class="circle" id="newyorkk"><button type="button" class="mapbut" onclick=showNewyork()></button></div>
                 <div class="circle" id="monacoo"><button type="button" class="mapbut" onclick=showMonaco()></button></div>
                 <div class="circle" id="dubaii"><button type="button" class="mapbut" onclick=showDubai()></button></div>
@@ -404,69 +498,197 @@
                 <div class="searchbar">
                     <input type="searchbar" id="searchbar" placeholder="Search.." name="Searchbar">
                     <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" ></i></button> <!--Image for the search button taken from a external source-->
+                    <button type="button" name="filterbutton" onclick=filters()>Filters</button>
+                    <button type="button" name="settingbutton" onclick=settings()>Settings</button>
+                </div>
+                <div id="filters">
+                    <h4>Search by ...</h4>
+                    <p class="filter" id='exp_name' onclick=filter1()>&#9898; experience's name</p>
+                    <p class="filter" id='author' onclick=filter2()>&#9898; author</p>
+                    <div class="filter">
+                        <p id="interest" onclick=filter3()>&#9898; interests</p>
+                        <select name="interests" id="int_options">
+                            <option value="">--Please choose one or more option(s)--</option>
+                            <option value="nature">Nature</option>
+                            <option value="food">Food</option>
+                            <option value="history">History</option>
+                            <option value="capital">Capital</option>
+                            <option value="sport">Sport</option>
+                            <option value="art">Art</option>
+                            <option value="leisure">Party/Lesiure</option>
+                        </select>                        
+                    </div>
+                    <button type="button" id='apply_filters' onclick="apply()">Apply</button>
+                </div>
+                <div id="settings">
+                    <h4 id="budget-section">Budget per person : 2 500€</h4>
+                    <div class='budget-bar'>
+                        <p class='setting_bar'>0€</p>
+                        <input id='budget' type='range' min='0' max='5000' oninput=budget_cursor()>
+                        <p class='setting_bar'>5000€</p>
+                    </div>
+                    <h4 id="distance-section">Distance : 6 000 km</h4>
+                    <select name="country" id="country" onclick="if(document.getElementById('country').value == 'france'){
+                        document.getElementById('french_cities').style.display = 'block'}else{document.getElementById('french_cities').style.display = 'none'}">
+                        <option value="">--Please select your home country--</option>
+                        <option value="france">France</option>
+                        <option value="spain">España</option>
+                        <option value="england">England</option>
+                        <option value="germany">Deutschland</option>
+                        <option value="usa">USA</option>
+                        <option value="italy">Italia</option>
+                        <option value="canada">Canada</option>
+                        <option value="australia">Australia</option>
+                        <option value="portugal">Portugal</option>
+                    </select>
+                    <select name="french_cities" id="french_cities">
+                        <option value="">--Please select your home city--</option>
+                        <option value="paris">Paris</option>
+                        <option value="lyon">Lyon</option>
+                        <option value="marseille">Marseille</option>
+                        <option value="bordeaux">Bordeaux</option>
+                    </select>
+                    <div class='distance-bar'>
+                        <p class='setting_bar'>0 km</p>
+                        <input id='distance' type='range' min='0' max='20000' oninput=distance_cursor()>
+                        <p class='setting_bar'>20 000 km</p>
+                    </div>
+                    <button type="button" id="apply_settings" onclick="apply()">Apply</button>
                 </div>
             </div>
-            <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+            <div>
                 <h1 class="title">Experiences</h1>
-                <br>
-                <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
-                    <li class="experiencecell" id="sortable1">
-                        <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
-                        <h2 onclick=showDubai()>Dubai</h2>
-                        <p class="description">An Oasis in the middle of the dessert</p>
-                    </li>
-                    <li class="experiencecell" id="sortable2">
-                        <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
-                        <h2 onclick=showMonaco()>Monaco</h2>
-                        <p class="description">Casinos, yachts and automobiles</p>
-                    </li>
-                    <li class="experiencecell" id="sortable3">
-                        <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>New York</h2>
-                        <p class="description">The city that never sleeps</p>
-                    </li>
-                </ul>
-                <ul class="row" id="sortablerow2">
-                    <li class="experiencecell" id="sortable4">
-                        <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Moscow</h2>
-                        <p class="description">City of parks and hospitality</p>
-                    </li>
-                    <li class="experiencecell" id="sortable5">
-                        <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Paris</h2>
-                        <p class="description">City of light</p>
-                    </li>
-                    <li class="experiencecell" id="sortable6">
-                        <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>San Francisco</h2>
-                        <p class="description">Modern vs victorian architecture</p>
-                    </li>
-                </ul>
-                <ul class="row" id="sortablerow3">
-                    <li class="experiencecell" id="sortable7">
-                        <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Tokyo</h2>
-                        <p class="description">Cyberpunk in real life</p>
-                    </li>
-                    <li class="experiencecell" id="sortable8">
-                        <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Madrid</h2>
-                        <p class="description">Charming medieval city</p>
-                    </li>
-                    <ul class="experiencecell" id="sortable9">
-                        <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
-                        <h2 onclick=showNewyork()>Sydney</h2>
-                        <p class="description">Luxury near the wild</p>
-                    </li>
-                </ul>
+                <div class="exploresection", id="connectedsortable"> <!--Area including 3x3 matrix of the experiences in full resolution and tablet and one experience per row in mobile resolution-->
+                    
+                    <br>
+                    <ul class="row" id="sortablerow1"> <!--Experiences organized by rows-->
+                        <li class="experiencecell" id="sortable1">
+                            <img src="images/dubaimobile.jpg" alt="dubai" id="ex1" onclick=showDubai()>
+                            <h2 onclick=showDubai()>Dubai</h2>
+                            <p class="description">An Oasis in the middle of the dessert</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                        <li class="experiencecell" id="sortable2">
+                            <img src="images/monacomobile.jpg" alt="monaco" id="ex2" onclick=showMonaco()>
+                            <h2 onclick=showMonaco()>Monaco</h2>
+                            <p class="description">Casinos, yachts and automobiles</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                        <li class="experiencecell" id="sortable3">
+                            <img src="images/newyorkmobile.jpg" alt="newyork" id="ex3" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>New York</h2>
+                            <p class="description">The city that never sleeps</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                    </ul>
+                    <ul class="row" id="sortablerow2">
+                        <li class="experiencecell" id="sortable4">
+                            <img src="images/moscowmobile.jpg" alt="moscow" id="ex4" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Moscow</h2>
+                            <p class="description">City of parks and hospitality</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                        <li class="experiencecell" id="sortable5">
+                            <img src="images/parismobile.jpg" alt="paris" id="ex5" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Paris</h2>
+                            <p class="description">City of light</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                        <li class="experiencecell" id="sortable6">
+                            <img src="images/sanfranciscomobile.jpg" alt="sanfrancisco" id="ex6" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>San Francisco</h2>
+                            <p class="description">Modern vs victorian architecture</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                    </ul>
+                    <ul class="row" id="sortablerow3">
+                        <li class="experiencecell" id="sortable7">
+                            <img src="images/tokyomobile.jpg" alt="tokyo" id="ex7" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Tokyo</h2>
+                            <p class="description">Cyberpunk in real life</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                        <li class="experiencecell" id="sortable8">
+                            <img src="images/madridmobile.jpg" alt="madrid" id="ex8" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Madrid</h2>
+                            <p class="description">Charming medieval city</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                        <ul class="experiencecell" id="sortable9">
+                            <img src="images/sydneymobile.jpg" alt="sydney" id="ex9" onclick=showNewyork()>
+                            <h2 onclick=showNewyork()>Sydney</h2>
+                            <p class="description">Luxury near the wild</p>
+                            <img src="images/like.png"
+                            alt="like button" style="width: 10%" title="Like this card" onclick="like(this)">
+                            <img src="images/comment.png" alt="comment button"
+                            style="width: 10%" title="Comment on this card">
+                            <img src="images/share.png" alt="share button"
+                            style="width: 10%" title="Share this card" onclick="popup(this.parentElement.parentElement)">
+                            <img class="favourites" src="images/favs.png" style="width: 13%; display:none;" title="Save in favourites" onclick="favourite(this)">
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="container">
+                <label for="newComment" name="newComment">Add your comment below-</label>
+                <textarea id="newComment"></textarea>
+                <button id="addComments" onclick=addComment()>Add Comment</button>
+                <div id="allComments"></div>
             </div>
         </div>
     </main>
     <br>
     <footer>
         <div class="logocontainer"> <!--Class for the webpage logo-->
-            <img src="images/neotravellogo.png" alt="neotravellogo" class="footerimg">
+            <img src="images/neotravellogo.jpg" alt="neotravellogo" class="footerimg">
         </div>
         <div class="footnav"> <!--Menu implemented  but not redirected to any page, to be implemented in future steps-->
             <a class="menus" href="#FAQs">FAQs</a>
