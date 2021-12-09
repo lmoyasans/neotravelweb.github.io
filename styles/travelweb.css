@@ -296,6 +296,15 @@ main > * {
 	display: block;
 }
 
+.comment{
+	border:2px solid white;
+	display:flex;
+}
+
+.sharelike{
+	display:flex;
+}
+
 #myExperiences {
 	display: none;
 	position: fixed;

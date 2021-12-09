@@ -484,16 +484,18 @@ function deleteExperience(el) {
         el.parentNode.parentNode.style.display = 'none';
 }
 
+function deleteComment(el) {
+    var x = confirm("Are you sure you want to delete?");
+    if (x)
+        el.parentNode.style.display = 'none';
+}
+
 function addComment(){
     const commentText = document.getElementById("newComment").value
     const commentsContainer = document.getElementById("allComments")
 
-    const comment = document.createElement("div");
-    comment.classList.add("comment");
-
-    const p = document.createElement("p");
-    p.innerText = commentText;
-    comment.appendChild(p);
-
-    commentsContainer.appendChild(comment);    
+    var html= 
+    "<div class = 'comment'> "
+    + "<h1 class='description'>" + commentText + "</h1><button type='button' onclick=deleteComment(this)>Delete</button><button type='button' onclick=like(this)>Like</button>"
+    $(html).insertAfter('#allComments');
 }
