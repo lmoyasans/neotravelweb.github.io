@@ -23,8 +23,12 @@ function login(){
         document.getElementById("usernamespace").style.color="indianred";
         document.getElementById("profileimageimg").src = getCookie("photito")
         document.getElementById("usernamespace").innerHTML = getCookie("username");
-        closeLoginForm()
-        console.log("hola")
+        var fav = document.getElementsByClassName("favourites");
+        for(i=0; i<fav.length; i++) {
+          fav[i].style.display = "block";
+        }
+        closeLoginForm();
+        console.log("hola");
     }else{
         alert("Wrong username or pass");
     }
@@ -42,6 +46,14 @@ function getCookie(nameCookie){
             return cook.substring(nameCookieComp.length, cook.length);
         }
     }
+}
+
+function openMyCollection(){
+    document.getElementById("myCollection").style.display="block";
+}
+
+function closeMyCollection(){
+    document.getElementById("myCollection").style.display="none";
 }
 
 function openMyExperiences(){
@@ -169,6 +181,7 @@ function signup(){
             alert("Account created");
             document.getElementById("notLogged").style.display = "none";
             document.getElementById("notLogged2").style.display = "none";
+            document.getElementById("menuLogged").style.display = "block";
             document.getElementById("requireLoginSection").style.display = "block";
             document.getElementById("profileimageimg").src = elements[9].value;
             document.getElementById("usernamespace").innerHTML = elements[1].value;
@@ -221,6 +234,256 @@ function searchBar(){
     };
     if (found == false){
         alert("No experiences found for this")
+    }
+}
+
+//functions for filters 
+function filters(){
+    if(document.getElementById("filters").style.display == "block"){
+        document.getElementById("filters").style.display = "none";
+    }else{
+        document.getElementById("filters").style.display = "block";
+    }
+}
+
+function favourite(f){
+    var element = f;
+    var exp = f.parentNode.id;
+    alert(document.getElementById(exp).innerHTML);
+    if ((f.src).substring(f.src.length - 15, f.src.length) == "images/favs.png"){
+        f.src = "images/faved.png";
+        var z = document.getElementById(exp).getElementsByTagName('img');
+        document.getElementById("myCollectionContent").innerHTML += '<div class="experiencecell" id="c'+ exp + '><img src="'+z[0].src+'">' + document.getElementById(exp).innerHTML + '</div>';
+        //document.getElementById(exp).innerHTML += '<img src="images/faved.png" style="width: 13%; display: none;" title="Delete from favourites">';
+    }
+    else{
+        f.src = "images/favs.png";
+        var collections = document.getElementById("myCollectionContent").getElementsByClassName("experiencecell");
+        
+        for (var l = 0; l < collections.length;l++){
+            alert((collections[l].id).substring(1, 10));
+            alert(exp);
+            if ((collections[l].id).substring(1, 10) == exp){
+                collections[l].remove();
+
+            }
+        }
+    }
+    
+}
+
+function like(el) {
+    if(el.parentElement.style.backgroundColor =="darkslategray"){
+        el.parentElement.style.backgroundColor = "black"
+    }else{
+        el.parentElement.style.backgroundColor = "darkslategray"
+    }
+    
+}
+function popup(parent) {
+    var popup = document.getElementById("myPopupShare")
+    popup.style.display = "block"
+    var title = parent.children[1].innerText
+    popup.children[0].children[1].innerHTML = "Would you like to share " + title + "?"
+}
+function closePopup() {
+    var popup = document.getElementById("myPopupShare")
+    popup.style.display = "none"
+}
+
+function apply(){
+    document.getElementById("filters").style.display = "none";
+    document.getElementById('settings').style.display = "none";
+
+    let i = document.getElementById('int_options').value;
+    let b = parseInt(document.getElementById('budget').value);
+    let d = parseInt(document.getElementById('distance').value);
+    let c = document.getElementById('french_cities').value;
+    let x = document.getElementsByClassName('experiencecell');
+
+    if (c=='lyon'){ //Because we don't have data base, we choose to simulate distance filter only for Lyon
+        if (b>=540 && d>=5006 && (i=='leisure' || i=='')) {  //criterias for Dubaï (settings & filters)
+            x[2].style.display="block";
+        }else{
+            x[2].style.display="none";
+        }
+        if (b>=352 && d>=304 && (i=='leisure' || i=='')) {  //criterias for Monaco (settings & filters)
+            x[3].style.display="block";
+        }else{
+            x[3].style.display="none";
+        }
+        if (b>=1005 && d>=6110 && (i=='leisure' || i=='food'  || i=='')) {  //criterias for New York (settings & filters)
+            x[4].style.display="block";
+        }else{
+            x[4].style.display="none";
+        }
+        if (b>=350 && d>=2528 && (i=='capital' || i=='leisure'  || i=='')) {  //criterias for Moscou (settings & filters)
+            x[5].style.display="block";
+        }else{
+            x[5].style.display="none";
+        }
+        if (b>=200 && d>=392 && (i=='capital' || i=='art'  || i=='')) {  //criterias for Paris (settings & filters)
+            x[6].style.display="block";
+        }else{
+            x[6].style.display="none";
+        }
+        if (b>=955 && d>=9337 && (i=='art' || i=='history'  || i=='')) {  //criterias for San Francisco (settings & filters)
+            x[7].style.display="block";
+        }else{
+            x[7].style.display="none";
+        }
+        if (b>=1220 && d>=9891 && (i=='food' || i=='art'  || i=='')) {  //criterias for Tokyo (settings & filters)
+            x[8].style.display="block";
+        }else{
+            x[8].style.display="none";
+        }
+        if (b>=120 && d>=1227 && (i=='capital' || i=='leisure'  || i=='')) {  //criterias for Madrid (settings & filters)
+            x[9].style.display="block";
+        }else{
+            x[9].style.display="none";
+        }
+        if (b>=1056 && d>=16884 && (i=='leisure'  || i=='')){ //criterias for Sydney (settings & filters)
+            x[10].style.display="block";
+        }else{
+            x[10].style.display="none";
+        }
+    }else if(c=="" && document.getElementById('country').value==""){ //no filters, only settings (interests)
+        if (i=='leisure' || i=='') {  //criterias for Dubaï
+            x[2].style.display="block";
+        }else{
+            x[2].style.display="none";
+        }
+        if (i=='leisure'  || i=='') {  //criterias for Monaco
+            x[3].style.display="block";
+        }else{
+            x[3].style.display="none";
+        }
+        if (i=='leisure' || i=='food'  || i=='') {  //criterias for New York
+            x[4].style.display="block";
+        }else{
+            x[4].style.display="none";
+        }
+        if (i=='capital' || i=='leisure'  || i=='') {  //criterias for Moscou
+            x[5].style.display="block";
+        }else{
+            x[5].style.display="none";
+        }
+        if (i=='capital' || i=='art'  || i=='') {  //criterias for Paris
+            x[6].style.display="block";
+        }else{
+            x[6].style.display="none";
+        }
+        if (i=='art' || i=='history'  || i=='') {  //criterias for San Francisco
+            x[7].style.display="block";
+        }else{
+            x[7].style.display="none";
+        }
+        if (i=='food' || i=='art'  || i=='') {  //criterias for Tokyo
+            x[8].style.display="block";
+        }else{
+            x[8].style.display="none";
+        }
+        if (i=='capital' || i=='leisure'  || i=='') {  //criterias for Madrid
+            x[9].style.display="block";
+        }else{
+            x[9].style.display="none";
+        }
+        if (i=='leisure'  || i=='') { //criterias for Sydney
+            x[10].style.display="block";
+        }else{
+            x[10].style.display="none";
+        }
+    }else{ // distance filter from another place than Lyon
+        alert("Sorry we haven't already implement distance filters for this home city, please choose an other")
+    }
+}
+
+function filter1(){
+    document.getElementById('exp_name').innerHTML="&#9899; experience's name";
+}
+
+function filter2(){
+    document.getElementById('author').innerHTML="&#9899; author";
+}
+
+function filter3(){
+    document.getElementById('interest').innerHTML="&#9899; interests";
+    document.getElementById('int_options').style.display = "block";
+}
+
+//functions for settings
+function settings(){
+    if(document.getElementById('settings').style.display == "block"){
+        document.getElementById('settings').style.display = "none";
+    }else{
+        document.getElementById('settings').style.display = "block"
+    }
+}
+
+function budget_cursor(){
+    var x = document.getElementById('budget').value;
+    document.getElementById('budget-section').innerHTML="Budget per person : "+x+"€";
+}
+
+function distance_cursor(){
+    var x = document.getElementById('distance').value;
+    document.getElementById('distance-section').innerHTML="Distance : "+x+" km";
+}
+
+function applySettings(){
+    document.getElementById('settings').style.display = "none";
+    let b = parseInt(document.getElementById('budget').value);
+    let d = parseInt(document.getElementById('distance').value);
+    let c = document.getElementById('french_cities').value;
+    let x = document.getElementsByClassName('experiencecell');
+    if (c=='lyon'){ //Because we don't have data base, we choose to simulate distance filter only for Lyon
+        if (b>=540 && d>=5006) {  //criterias for Dubaï
+            x[2].style.display="block";
+        }else{
+            x[2].style.display="none";
+        }
+        if (b>=352 && d>=304) {  //criterias for Monaco
+            x[3].style.display="block";
+        }else{
+            x[3].style.display="none";
+        }
+        if (b>=1005 && d>=6110) {  //criterias for New York
+            x[4].style.display="block";
+        }else{
+            x[4].style.display="none";
+        }
+        if (b>=350 && d>=2528) {  //criterias for Moscou
+            x[5].style.display="block";
+        }else{
+            x[5].style.display="none";
+        }
+        if (b>=200 && d>=392) {  //criterias for Paris
+            x[6].style.display="block";
+        }else{
+            x[6].style.display="none";
+        }
+        if (b>=955 && d>=9337) {  //criterias for San Francisco
+            x[7].style.display="block";
+        }else{
+            x[7].style.display="none";
+        }
+        if (b>=1220 && d>=9891) {  //criterias for Tokyo
+            x[8].style.display="block";
+        }else{
+            x[8].style.display="none";
+        }
+        if (b>=120 && d>=1227) {  //criterias for Madrid
+            x[9].style.display="block";
+        }else{
+            x[9].style.display="none";
+        }
+        if (b>=1056 && d>=16884) { //criterias for Sydney
+            x[10].style.display="block";
+        }else{
+            x[10].style.display="none";
+        }
+    }else{
+        alert("Sorry we haven't already implement distance filters for this home city, please choose an other")
     }
 }
 
