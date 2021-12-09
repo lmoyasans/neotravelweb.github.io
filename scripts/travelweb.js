@@ -17,17 +17,14 @@ function login(){
 
     const savedUser = localStorage.getItem("user-" + data.get("username"));
 
-    if (!savedUser) 
-    {
+    if (!savedUser) {
         alert("No account exists with this username")
-    } else 
-    {
+    } else{
         const savedData = JSON.parse(savedUser);
         if (savedData.password !== data.get("password")) 
         {
             alert("Wrong password")
-        } else 
-        {
+        } else {
             console.log(savedData)
             loggedUser = savedData
             document.getElementById("notLogged").style.display = "none";
@@ -41,8 +38,9 @@ function login(){
             var fav = document.getElementsByClassName("favourites");
             for(i=0; i<fav.length; i++) {
               fav[i].style.display = "block";
-          }
+            }
             closeLoginForm()
+        }
     }
 }
 
@@ -261,8 +259,7 @@ function favourite(f){
         var z = document.getElementById(exp).getElementsByTagName('img');
         document.getElementById("myCollectionContent").innerHTML += '<div class="experiencecell" id="c'+ exp + '><img src="'+z[0].src+'">' + document.getElementById(exp).innerHTML + '</div>';
         //document.getElementById(exp).innerHTML += '<img src="images/faved.png" style="width: 13%; display: none;" title="Delete from favourites">';
-    }
-    else{
+    }else{
         f.src = "images/favs.png";
         var collections = document.getElementById("myCollectionContent").getElementsByClassName("experiencecell");
         
@@ -279,13 +276,22 @@ function favourite(f){
 }
 
 function like(el) {
+    if(el.parentElement.parentElement.style.backgroundColor =="darkslategray"){
+        el.parentElement.parentElement.style.backgroundColor = "black"
+    }else{
+        el.parentElement.parentElement.style.backgroundColor = "darkslategray"
+    }
+    
+}
+
+function likeComment(el){
     if(el.parentElement.style.backgroundColor =="darkslategray"){
         el.parentElement.style.backgroundColor = "black"
     }else{
         el.parentElement.style.backgroundColor = "darkslategray"
     }
-    
 }
+
 function popup(parent) {
     var popup = document.getElementById("myPopupShare")
     popup.style.display = "block"
@@ -516,14 +522,16 @@ function addExperience(){
 }
 function deleteExperience(el) {
     var x = confirm("Are you sure you want to delete?");
-    if (x)
+    if (x){
         el.parentNode.parentNode.style.display = 'none';
+    }
 }
 
 function deleteComment(el) {
     var x = confirm("Are you sure you want to delete?");
-    if (x)
+    if (x){
         el.parentNode.style.display = 'none';
+    }
 }
 
 function addComment(){
@@ -532,6 +540,6 @@ function addComment(){
 
     var html= 
     "<div class = 'comment'> "
-    + "<h1 class='description'>" + commentText + "</h1><button type='button' onclick=deleteComment(this)>Delete</button><button type='button' onclick=like(this)>Like</button>"
+    + "<h1 class='description'>" + commentText + "</h1><button type='button' onclick=deleteComment(this)>Delete</button><button type='button' onclick=likeComment(this)>Like</button>"
     $(html).insertAfter('#allComments');
 }
