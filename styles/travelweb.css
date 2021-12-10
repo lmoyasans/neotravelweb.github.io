@@ -439,6 +439,7 @@ main > * {
 	margin-right: 10%;
 }
 
+
 .searchbar {
 	display: flex;
 	justify-content: center;
@@ -708,6 +709,10 @@ footer img {
 	font-size: 1.5vw;
 }
 
+.container label{
+	color:white;
+}
+
 /*Responsiveness for different resolution devices*/
 
 @media screen and (max-width: 680px) {
@@ -758,6 +763,13 @@ footer img {
 		font-size: 5vw;
 		font-family: cursive;
 		font-style: italic;
+	}
+	#loginForm p{
+		color:white;
+		font-size:5vw;
+	}
+	#loginForm{
+		display:flex;
 	}
 	.drop-down {
 		/*Set a high z-index so that the drop-down menu is presented above the rest of the content*/

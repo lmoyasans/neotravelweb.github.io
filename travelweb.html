@@ -17,17 +17,17 @@
             <img id="hamburguer-img" src="images/menu.png" alt="hamburguer-menu-img">
             <div class="drop-down">
                 <a href="#home">Home</a><br>
-                <a href="#about-us">About us</a><br>
-                <a href="#help">Help</a><br>
-                <a href="#faq">FAQs</a><br>
-                <a href="#terms">Terms of Use</a><br>
-                <a href="#dubai">Dubai</a><br>
-                <a href="#monaco">Monaco</a><br>
-                <a href="#newYork">New York</a><br>
+                <a >About us</a><br>
+                <a >Help</a><br>
+                <a >FAQs</a><br>
+                <a >Terms of Use</a><br>
+                <a >Dubai</a><br>
+                <a >Monaco</a><br>
+                <a >New York</a><br>
                 <div id="not-logged-hamburguer">
-                    <a href="#login" onclick=openLoginForm()>Login</a>
+                    <a onclick=openLoginForm()>Login</a>
                     <br>
-                    <a href="#signup" onclick=openSignupForm()>Signup</a>
+                    <a onclick=openSignupForm()>Signup</a>
                 </div>
                 <div id="require-login-hamburguer">
                     <a onclick=openMyProfile()>My profile</a>
@@ -416,10 +416,8 @@
         </div>
         <form class="form" id="loginForm">
             <h1>Login</h1>
-            <label for="username">Username</label>
-            <input type="text" placeholder ="Introduce username" name="username" required>
-            <label for="password">Password</label>
-            <input type="password" placeholder = "Introduce password" name="password" required>
+            <label><p>Username: <input type="text" placeholder ="Introduce username" name="username" required></p></label>
+            <label><p>Password: <input type="password" placeholder = "Introduce password" name="password" required></p></label>
             <button type = "button" class = "button" onclick=login()>Login</button>
             <button type = "button" class = "button" onclick="closeLoginForm()">Close</button>
         </form>
@@ -430,31 +428,29 @@
                     <p>Username (*): <input id="username" type="text" name="username" minlength="1" required></p>
                     <p>Password (*): <input id="password" type="password" name="password" maxlength="8" placeholder="Máx. 8 caracteres" required></p>
                 </fieldset>
-
                 <fieldset>
                     <legend>Personal information></legend>
-                    <p>Name(*): <input id="name" type="text" name="name" required></p>
-                    <p>Surnames(*): <input id="surname" type="text" name="surname" size="40" placeholder="Write your two surnames" required></p>
-                    <p>Email(*): <input id="email" type="email" name="email" size="40" placeholder="e.g. interfaces@gmail.com"required></p>
-                    <p>Birthdate(*): <input id="date" type="date" name="date" size="20" placeholder="dd/mm/aaaa" required></p>
-                    <p>Interests(*): <select id="interest" name="interests" size="1">
+                    <label><p>Name(*): <input id="name" type="text" name="name" required></p></label>
+                    <label><p>Surnames(*): <input id="surname" type="text" name="surname" size="40" placeholder="Write your two surnames" required></p></label>
+                    <label><p>Email(*): <input id="email" type="email" name="email" size="40" placeholder="e.g. interfaces@gmail.com"required></p></label>
+                    <label><p>Birthdate(*): <input id="date" type="date" name="date" size="20" placeholder="dd/mm/aaaa" required></p></label>
+                    <label><p>Interests(*): <select id="interest" name="interests" size="1">
                         <option>...</option>
                         <option>Cultural tourism</option>
                         <option>Eco tourism</option>
                         <option>Beach tourism</option>
                         <option>Business tourism</option>
                         <option>Exotic tourism</option>
-                    </select></p>
-                    <p>Photo(*): <select id="photito" name="photito" size="1">
+                    </select></p></label>
+                    <label><p>Photo(*): <select id="photito" name="photito" size="1">
                         <option>...</option>
                         <option>images/profile1.jpeg</option>
                         <option>images/profile2.webp</option>
                         <option>images/profile3.jpg</option>
                         <option>images/profile4.webp</option>
                         <option>images/profile5.jpg</option>
-                    </select></p>
+                    </select></p></label>
                 </fieldset>
-
                 <label><input type="checkbox" id="terms" required>I have read and accepted the Terms of Use (*)</label>
                 <p>
                     <button id="guardar" type="button" onclick=signup()> Submit </button>
@@ -799,7 +795,7 @@
                 <h1 class="title">Search area</h1>
                 <div class="searchbar">
                     <input type="searchbar" id="searchbar" placeholder="Search.." name="Searchbar">
-                    <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" ></i></button> <!--Image for the search button taken from a external source-->
+                    <button type="button" name="searchbutton" onclick=searchBar()><i class="fa fa-search" > </i></button> <!--Image for the search button taken from a external source-->
                     <button type="button" name="filterbutton" onclick=filters()>Filters</button>
                     <button type="button" name="settingbutton" onclick=settings()>Settings</button>
                 </div>
@@ -982,15 +978,15 @@
             <img src="images/neotravellogo.jpg" alt="neotravellogo" class="footerimg">
         </div>
         <div class="footnav"> <!--Menu implemented  but not redirected to any page, to be implemented in future steps-->
-            <a class="menus" href="#FAQs">FAQs</a>
-            <a class="menus" href="#privacy">Privacy policy</a>
-            <a class="menus" href="#copyright">Copyright</a>
+            <a class="menus" >FAQs</a>
+            <a class="menus">Privacy policy</a>
+            <a class="menus">Copyright</a>
         </div>
         <div class="socialmedia"> <!--Social media links, redirected to the main pages as the web site is not yet in the social media. Images are taken from a external source (second stylesheet link in the head of the page)-->
-            <a href="https://www.facebook.com/" class="fa fa-facebook"></a>
-            <a href="https://twitter.com/home?lang=es" class="fa fa-twitter"></a>
-            <a href="https://www.youtube.com/" class="fa fa-youtube"></a>
-            <a href="https://www.instagram.com/?hl=es" class="fa fa-instagram"></a>
+            <a href="https://www.facebook.com/" class="fa fa-facebook"> </a>
+            <a href="https://twitter.com/home?lang=es" class="fa fa-twitter"> </a>
+            <a href="https://www.youtube.com/" class="fa fa-youtube"> </a>
+            <a href="https://www.instagram.com/?hl=es" class="fa fa-instagram"> </a>
         </div>
     </footer>
     <script>
