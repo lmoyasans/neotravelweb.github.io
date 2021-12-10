@@ -21,6 +21,23 @@
                 <a href="#help">Help</a><br>
                 <a href="#faq">FAQs</a><br>
                 <a href="#terms">Terms of Use</a><br>
+                <a href="#dubai">Dubai</a><br>
+                <a href="#monaco">Monaco</a><br>
+                <a href="#newYork">New York</a><br>
+                <div id="not-logged-hamburguer">
+                    <a href="#login" onclick=openLoginForm()>Login</a>
+                    <br>
+                    <a href="#signup" onclick=openSignupForm()>Signup</a>
+                </div>
+                <div id="require-login-hamburguer">
+                    <a onclick=openMyProfile()>My profile</a>
+                    <br>
+                    <a onclick=openMyCollection()>My collection</a>
+                    <br>
+                    <a onclick=openMyExperiences()>My experiences</a>
+                    <br>
+                    <a onclick=openLogout()>Logout</a> 
+                </div>
               </div>
         </div>
         <div class="logocontainer"> <!--Class for the webpage logo-->
@@ -32,7 +49,7 @@
             <a class="menus" onclick=showMonaco()>Monaco</a>
             <a class="menus" onclick=showNewYork()>New York</a>
         </div>
-        <div class="buttons"> <!--Buttons, functionality yet to be implemented-->
+        <div class="buttons" id="buttons-topnav"> <!--Buttons, functionality yet to be implemented-->
             <button type="button" name="signup" id="notLogged" onclick = "openSignupForm()">Sign up</button>
             <button type="button" name="login" id="notLogged2" onclick = "openLoginForm()">Login</button>
         </div>

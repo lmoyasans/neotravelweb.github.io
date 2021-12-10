@@ -17,6 +17,10 @@ h1 {
 	color: white;
 }
 
+legened{
+	color:white;
+}
+
 h2 {
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
 		Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
@@ -69,6 +73,10 @@ header img {
 	/*Introduce space between the different options of the top navigator*/
 	padding: 12px;
 	font-size: 2vw;
+}
+
+#require-login-hamburguer{
+	display:none;
 }
 
 .buttons {
@@ -300,6 +308,7 @@ header img {
 	border: 2px solid white;
 	width: 50vw;
 	margin-left: 25vw;
+	height: auto;
 }
 
 /* Map */
@@ -693,6 +702,11 @@ footer img {
 	margin-left: 25vw;
 }
 
+#require-login-hamburguer a{
+	color: white;
+	font-size: 5vw;
+}
+
 /*Responsiveness for different resolution devices*/
 
 @media screen and (max-width: 680px) {
@@ -720,6 +734,54 @@ footer img {
 		/*Reduction of the top nav logo to fit with smaller spaces*/
 		height: 70px;
 	}
+	.topnav{
+		display:none;
+	}
+	#buttons-topnav{
+		display:none;
+	}
+	#hamburguer-img {
+		width: 7vw;
+		height: 7vw;
+	}
+	.hamburguer-menu:hover .drop-down {
+		max-height: 100vh;
+		display: block;
+	}
+	button {
+		/*Personalization of buttons style*/
+		background-color: black;
+		color: white;
+		border-radius: 100px;
+		padding: 5px;
+		font-size: 5vw;
+		font-family: cursive;
+		font-style: italic;
+	}
+	.drop-down {
+		/*Set a high z-index so that the drop-down menu is presented above the rest of the content*/
+		z-index: 100;
+		margin-left: 1%;
+		position: absolute;
+		background-color: black;
+		top: 35 vw;
+		display: none;
+	}
+	
+	.drop-down a {
+		color: white;
+		font-size: 5vw;
+	}
+	.form {
+		display: none;
+		overflow: auto;
+		position: fixed;
+		background-color: darkslategray;
+		border: 2px solid white;
+		width: 70vw;
+		margin-left: 5vw;
+		height:40vh;
+	}
 }
 
 @media screen and (max-width: 1024px) and (min-width: 681px) {
@@ -745,6 +807,41 @@ footer img {
 		/*Reduction of the top nav logo to fit with smaller spaces*/
 		height: 70px;
 	}
+	button {
+		/*Personalization of buttons style*/
+		background-color: black;
+		color: white;
+		border-radius: 100px;
+		padding: 9px;
+		font-size: 3vw;
+		font-family: cursive;
+		font-style: italic;
+	}
+	.drop-down {
+		/*Set a high z-index so that the drop-down menu is presented above the rest of the content*/
+		z-index: 100;
+		margin-left: 1%;
+		position: absolute;
+		background-color: black;
+		top: 35 vw;
+		display: none;
+	}
+	
+	.drop-down a {
+		color: white;
+		font-size: 3vw;
+	}
+	.form {
+		display: none;
+		overflow: auto;
+		position: fixed;
+		background-color: darkslategray;
+		border: 2px solid white;
+		width: 50vw;
+		margin-left: 25vw;
+		height: 40vh;
+	}
+	
 }
 
 /*add comment section*/

@@ -27,14 +27,23 @@ function login(){
         } else {
             console.log(savedData)
             loggedUser = savedData
-            document.getElementById("notLogged").style.display = "none";
-            document.getElementById("notLogged2").style.display = "none";
-            document.getElementById("menuLogged").style.display = "block";
-            document.getElementById("profileimageimg").style.display="block";
-            document.getElementById("requireLoginSection").style.display = "block";
-            document.getElementById("usernamespace").style.color="aqua";
-            document.getElementById("profileimageimg").src = savedData.photito
-            document.getElementById("usernamespace").innerHTML = savedData.username
+            if ($(window).width() < 680) {
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+                
+            }
+            else {
+                document.getElementById("notLogged").style.display = "none";
+                document.getElementById("notLogged2").style.display = "none";
+                document.getElementById("menuLogged").style.display = "block";
+                document.getElementById("requireLoginSection").style.display = "block";
+                document.getElementById("profileimageimg").src = data.get("photito")
+                document.getElementById("usernamespace").innerHTML = data.get("username");
+                document.getElementById("usernamespace").style.color = "aqua";
+                document.getElementById("profileimageimg").style.display="block";
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+            }
             var fav = document.getElementsByClassName("favourites");
             for(i=0; i<fav.length; i++) {
               fav[i].style.display = "block";
@@ -286,18 +295,30 @@ function signup(){
             for(const key of data.keys()) {
                 user[key] = data.get(key);     
             }
-
+            
+             
             console.log(user);
 
             localStorage.setItem("user-" + data.get("username"), JSON.stringify(user));
             alert("Account created");
-            document.getElementById("notLogged").style.display = "none";
-            document.getElementById("notLogged2").style.display = "none";
-            document.getElementById("menuLogged").style.display = "block";
-            document.getElementById("requireLoginSection").style.display = "block";
-            document.getElementById("profileimageimg").src = data.get("photito")
-            document.getElementById("usernamespace").innerHTML = data.get("username");
-            document.getElementById("profileimageimg").style.display="block";
+            
+            if ($(window).width() < 680) {
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+                
+            }
+            else {
+                document.getElementById("notLogged").style.display = "none";
+                document.getElementById("notLogged2").style.display = "none";
+                document.getElementById("menuLogged").style.display = "block";
+                document.getElementById("requireLoginSection").style.display = "block";
+                document.getElementById("profileimageimg").src = data.get("photito")
+                document.getElementById("usernamespace").innerHTML = data.get("username");
+                document.getElementById("usernamespace").style.color = "aqua";
+                document.getElementById("profileimageimg").style.display="block";
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+            }
             closeSignupForm();
             loggedUser = user;
             var fav = document.getElementsByClassName("favourites");
@@ -333,6 +354,8 @@ function logout(){
     document.getElementById("logoutPopup").style.display = "none";
     document.getElementById("usernamespace").style.color="black";
     document.getElementById("profileimageimg").style.display="none";
+    document.getElementById("require-login-hamburguer").style.display="none";
+    document.getElementById("not-logged-hamburguer").style.display="block";
     loggedUser = null;
 }
 
