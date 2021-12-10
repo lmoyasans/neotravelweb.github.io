@@ -300,6 +300,10 @@ function signup(){
             document.getElementById("profileimageimg").style.display="block";
             closeSignupForm();
             loggedUser = user;
+            var fav = document.getElementsByClassName("favourites");
+            for(i=0; i<fav.length; i++) {
+              fav[i].style.display = "block";
+            }
         }
     }else{
         alert("Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy")
