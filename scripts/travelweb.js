@@ -123,22 +123,133 @@ function closeMyProfile(){
 function showNewyork(){
     closeMonaco();
     closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
     document.getElementById("newyork").style.display = "block";
 }
 
 function showMonaco(){
     closeNewyork();
     closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
     document.getElementById("monaco").style.display = "block";
 }
 
 function showDubai(){
     closeNewyork();
     closeMonaco();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
     document.getElementById("dubai").style.display = "block";
 }
+
+function showTokyo(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("tokyo").style.display = "block";
+}
+
+function showMadrid(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeSydney();
+    closeMoscow();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("madrid").style.display = "block";
+}
+
+function showSydney(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeMoscow();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("sydney").style.display = "block";
+}
+
+function showMoscow(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("moscow").style.display = "block";
+}
+
+function showSanFrancisco(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
+    closeParis();
+    document.getElementById("sanfrancisco").style.display = "block";
+}
+
+function showParis(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeSanFrancisco();
+    closeMoscow();
+    document.getElementById("paris").style.display = "block";
+}
+
+
+function closeSydney(){
+    document.getElementById("sydney").style.display = "none";
+}
+
+function closeParis(){
+    document.getElementById("paris").style.display = "none";
+}
+
+function closeSanFrancisco(){
+    document.getElementById("sanfrancisco").style.display = "none";
+}
+
+
+function closeMoscow(){
+    document.getElementById("moscow").style.display = "none";
+}
+
 function closeNewyork(){
     document.getElementById("newyork").style.display = "none";
+}
+
+function closeTokyo(){
+    document.getElementById("tokyo").style.display = "none";
+}
+
+function closeMadrid(){
+    document.getElementById("madrid").style.display = "none";
 }
 
 function closeMonaco(){

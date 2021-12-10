@@ -140,6 +140,78 @@ header img {
 	z-index: 1;
 }
 
+#tokyo {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#sydney {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#paris{
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#sanfrancisco{
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#moscow {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
+#madrid {
+	display: none;
+	position: fixed;
+	background-color: black;
+	border: 2px solid white;
+	width: 65vw;
+	height: 38vw;
+	margin-left: 20vw;
+	overflow: auto;
+	z-index: 1;
+}
+
 #myProfile {
 	display: none;
 	position: fixed;
