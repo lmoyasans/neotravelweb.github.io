@@ -77,6 +77,7 @@ header img {
 
 #require-login-hamburguer{
 	display:none;
+	font-size: 5vw;
 }
 
 .buttons {
@@ -704,7 +705,7 @@ footer img {
 
 #require-login-hamburguer a{
 	color: white;
-	font-size: 5vw;
+	font-size: 1.5vw;
 }
 
 /*Responsiveness for different resolution devices*/
@@ -781,6 +782,10 @@ footer img {
 		width: 70vw;
 		margin-left: 5vw;
 		height:40vh;
+	}
+	#require-login-hamburguer a{
+		color: white;
+		font-size: 5vw;
 	}
 }
 
