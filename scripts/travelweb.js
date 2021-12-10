@@ -363,8 +363,7 @@ function filters(){
 
 function favourite(f){
     var element = f;
-    var exp = f.parentNode.id;
-    alert(document.getElementById(exp).innerHTML);
+    var exp = f.parentNode.parentNode.id;
     if ((f.src).substring(f.src.length - 15, f.src.length) == "images/favs.png"){
         f.src = "images/faved.png";
         var z = document.getElementById(exp).getElementsByTagName('img');
@@ -375,8 +374,6 @@ function favourite(f){
         var collections = document.getElementById("myCollectionContent").getElementsByClassName("experiencecell");
         
         for (var l = 0; l < collections.length;l++){
-            alert((collections[l].id).substring(1, 10));
-            alert(exp);
             if ((collections[l].id).substring(1, 10) == exp){
                 collections[l].remove();
 
