@@ -1,3 +1,5 @@
+let loggedUser = null;
+
 //Functions for the header section
 //Cookies for login
 function openLoginForm(){
@@ -10,43 +12,47 @@ function closeLoginForm(){
 }
 
 function login(){
-    var elements = document.getElementById("loginForm");
-    var username = elements[0].value;
-    var password = elements[1].value;
-    var cookie_username = getCookie("username");
-    var cookie_password = getCookie("password");
-    if (cookie_username == username && cookie_password == password) {
-        document.getElementById("notLogged").style.display = "none";
-        document.getElementById("notLogged2").style.display = "none";
-        document.getElementById("profileimageimg").style.display="block";
-        document.getElementById("requireLoginSection").style.display = "block";
-        document.getElementById("usernamespace").style.color="indianred";
-        document.getElementById("profileimageimg").src = getCookie("photito")
-        document.getElementById("usernamespace").innerHTML = getCookie("username");
-        var fav = document.getElementsByClassName("favourites");
-        for(i=0; i<fav.length; i++) {
-          fav[i].style.display = "block";
+    var form = document.getElementById("loginForm");
+    const data = new FormData(form);
+
+    const savedUser = localStorage.getItem("user-" + data.get("username"));
+
+    if (!savedUser) {
+        alert("No account exists with this username")
+    } else{
+        const savedData = JSON.parse(savedUser);
+        if (savedData.password !== data.get("password")) 
+        {
+            alert("Wrong password")
+        } else {
+            console.log(savedData)
+            loggedUser = savedData
+            if ($(window).width() < 680) {
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+                
+            }
+            else {
+                document.getElementById("notLogged").style.display = "none";
+                document.getElementById("notLogged2").style.display = "none";
+                document.getElementById("menuLogged").style.display = "block";
+                document.getElementById("requireLoginSection").style.display = "block";
+                document.getElementById("profileimageimg").src = data.get("photito")
+                document.getElementById("usernamespace").innerHTML = data.get("username");
+                document.getElementById("usernamespace").style.color = "aqua";
+                document.getElementById("profileimageimg").style.display="block";
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+            }
+            var fav = document.getElementsByClassName("favourites");
+            for(i=0; i<fav.length; i++) {
+              fav[i].style.display = "block";
+            }
+            closeLoginForm()
         }
-        closeLoginForm();
-        console.log("hola");
-    }else{
-        alert("Wrong username or pass");
     }
 }
 
-function getCookie(nameCookie){
-    var nameCookieComp= nameCookie + "=";
-    var ca = document.cookie.split(';');
-    for (var i=0; i<ca.length; i++){
-        var cook = ca[i];
-        while (cook.charAt(0) == ' '){
-            cook = cook.substring(1);
-        }
-        if (cook.indexOf(nameCookieComp) == 0){
-            return cook.substring(nameCookieComp.length, cook.length);
-        }
-    }
-}
 
 function openMyCollection(){
     document.getElementById("myCollection").style.display="block";
@@ -66,15 +72,15 @@ function closeMyExperiences(){
 
 function openMyProfile(){
     document.getElementById("myProfile").style.display="block";
-    document.getElementById("usernameprof").innerHTML = getCookie("username");
-    document.getElementById("passwordprof").innerHTML = getCookie("password");
-    document.getElementById("nameprof").innerHTML = getCookie("name");
-    document.getElementById("surnameprof").innerHTML = getCookie("surname");
-    document.getElementById("usernameprof").innerHTML = getCookie("username");
-    document.getElementById("emailprof").innerHTML = getCookie("email");
-    document.getElementById("birthprof").innerHTML = getCookie("date");
-    document.getElementById("interestprof").innerHTML = getCookie("interests");
-    document.getElementById("profilephotoprof").src = getCookie("photito");
+    document.getElementById("usernameprof").innerHTML = loggedUser.username;
+    document.getElementById("passwordprof").innerHTML = loggedUser.password;
+    document.getElementById("nameprof").innerHTML = loggedUser.name;
+    document.getElementById("surnameprof").innerHTML = loggedUser.surname;
+    document.getElementById("usernameprof").innerHTML = loggedUser.username;
+    document.getElementById("emailprof").innerHTML = loggedUser.email;
+    document.getElementById("birthprof").innerHTML = loggedUser.date;
+    document.getElementById("interestprof").innerHTML = loggedUser.interests;
+    document.getElementById("profilephotoprof").src = loggedUser.photito;
 }
 
 function openChangeUsername(){
@@ -83,14 +89,7 @@ function openChangeUsername(){
 function closeChangeUsername(){
     document.getElementById("changeUsername").style.display="none";
 }
-function changeUsername(){
-    var elements = document.getElementById("userchange");
-    cookie = elements[1].name + "=" + elements[1].value;
-    document.cookie = cookie;
-    document.getElementById("usernameprof").innerHTML = getCookie("username");
-    document.getElementById("usernamespace").innerHTML = getCookie("username");
-    closeChangeUsername();
-}
+
 
 function openChangeInterest(){
     document.getElementById("changeInterest").style.display = "block";
@@ -100,9 +99,12 @@ function closeChangeInterest(){
 }
 function changeInterest(){
     var elements = document.getElementById("intchange");
-    cookie = elements[1].name + "=" + elements[1].value;
-    document.cookie = cookie;
-    document.getElementById("interestprof").innerHTML = getCookie("interests");
+    const newUser = {...loggedUser, interests: elements[1].value};
+
+    localStorage.setItem("user-" + loggedUser.username, JSON.stringify(newUser));
+    loggedUser = newUser;
+
+    document.getElementById("interestprof").innerHTML = loggedUser.interests;
     closeChangeInterest();
 }
 
@@ -114,11 +116,12 @@ function closeChangeProfileImage(){
 }
 function changeProfileImage(){
     var elements = document.getElementById("imageprofchange");
-    console.log(elements);
-    cookie = elements[1].name + "=" + elements[1].value;
-    document.cookie = cookie;
-    document.getElementById("profilephotoprof").src = getCookie("photito");
-    document.getElementById("profileimageimg").src = getCookie("photito");
+    const newUser = {...loggedUser, photito: elements[1].value};
+
+    localStorage.setItem("user-" + loggedUser.username, JSON.stringify(newUser));
+    loggedUser = newUser;
+    document.getElementById("profilephotoprof").src = loggedUser.photito;
+    document.getElementById("profileimageimg").src = loggedUser.photito;
     closeChangeProfileImage();
 }
 
@@ -129,22 +132,133 @@ function closeMyProfile(){
 function showNewyork(){
     closeMonaco();
     closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
     document.getElementById("newyork").style.display = "block";
 }
 
 function showMonaco(){
     closeNewyork();
     closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
     document.getElementById("monaco").style.display = "block";
 }
 
 function showDubai(){
     closeNewyork();
     closeMonaco();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
     document.getElementById("dubai").style.display = "block";
 }
+
+function showTokyo(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("tokyo").style.display = "block";
+}
+
+function showMadrid(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeSydney();
+    closeMoscow();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("madrid").style.display = "block";
+}
+
+function showSydney(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeMoscow();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("sydney").style.display = "block";
+}
+
+function showMoscow(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeSanFrancisco();
+    closeParis();
+    document.getElementById("moscow").style.display = "block";
+}
+
+function showSanFrancisco(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeMoscow();
+    closeParis();
+    document.getElementById("sanfrancisco").style.display = "block";
+}
+
+function showParis(){
+    closeNewyork();
+    closeMonaco();
+    closeDubai();
+    closeTokyo();
+    closeMadrid();
+    closeSydney();
+    closeSanFrancisco();
+    closeMoscow();
+    document.getElementById("paris").style.display = "block";
+}
+
+
+function closeSydney(){
+    document.getElementById("sydney").style.display = "none";
+}
+
+function closeParis(){
+    document.getElementById("paris").style.display = "none";
+}
+
+function closeSanFrancisco(){
+    document.getElementById("sanfrancisco").style.display = "none";
+}
+
+
+function closeMoscow(){
+    document.getElementById("moscow").style.display = "none";
+}
+
 function closeNewyork(){
     document.getElementById("newyork").style.display = "none";
+}
+
+function closeTokyo(){
+    document.getElementById("tokyo").style.display = "none";
+}
+
+function closeMadrid(){
+    document.getElementById("madrid").style.display = "none";
 }
 
 function closeMonaco(){
@@ -166,27 +280,51 @@ function closeSignupForm(){
 }
 
 function signup(){
-    document.cookie=""
     if (document.getElementById("terms").checked){
-        var elements = document.getElementById("signup");
-        var cookie = "";
-        var email = elements[5].value;
-        if (document.cookie.includes("email=" + email)){
+        var form = document.getElementById("signup");
+
+        const data = new FormData(form);
+        console.log(data)
+
+
+        if (localStorage.getItem("user-" + data.get("username"))) {
             alert("Account already created");
-        }else{
-            for(var i=1; i<elements.length;i++){
-                cookie = elements[i].name + "=" + elements[i].value;
-                document.cookie = cookie;
+        } else{
+            const user = {};
+
+            for(const key of data.keys()) {
+                user[key] = data.get(key);     
             }
+            
+             
+            console.log(user);
+
+            localStorage.setItem("user-" + data.get("username"), JSON.stringify(user));
             alert("Account created");
-            document.getElementById("notLogged").style.display = "none";
-            document.getElementById("notLogged2").style.display = "none";
-            document.getElementById("menuLogged").style.display = "block";
-            document.getElementById("requireLoginSection").style.display = "block";
-            document.getElementById("profileimageimg").src = elements[9].value;
-            document.getElementById("usernamespace").innerHTML = elements[1].value;
-            document.getElementById("profileimageimg").style.display="block";
+            
+            if ($(window).width() < 680) {
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+                
+            }
+            else {
+                document.getElementById("notLogged").style.display = "none";
+                document.getElementById("notLogged2").style.display = "none";
+                document.getElementById("menuLogged").style.display = "block";
+                document.getElementById("requireLoginSection").style.display = "block";
+                document.getElementById("profileimageimg").src = data.get("photito")
+                document.getElementById("usernamespace").innerHTML = data.get("username");
+                document.getElementById("usernamespace").style.color = "aqua";
+                document.getElementById("profileimageimg").style.display="block";
+                document.getElementById("require-login-hamburguer").style.display="block";
+                document.getElementById("not-logged-hamburguer").style.display="none";
+            }
             closeSignupForm();
+            loggedUser = user;
+            var fav = document.getElementsByClassName("favourites");
+            for(i=0; i<fav.length; i++) {
+              fav[i].style.display = "block";
+            }
         }
     }else{
         alert("Please indicate that you have read and agree to the Terms and Conditions and Privacy Policy")
@@ -216,6 +354,9 @@ function logout(){
     document.getElementById("logoutPopup").style.display = "none";
     document.getElementById("usernamespace").style.color="black";
     document.getElementById("profileimageimg").style.display="none";
+    document.getElementById("require-login-hamburguer").style.display="none";
+    document.getElementById("not-logged-hamburguer").style.display="block";
+    loggedUser = null;
 }
 
 //Functions for the search bar
@@ -246,23 +387,20 @@ function filters(){
     }
 }
 
+
 function favourite(f){
     var element = f;
-    var exp = f.parentNode.id;
-    alert(document.getElementById(exp).innerHTML);
+    var exp = f.parentNode.parentNode.id;
     if ((f.src).substring(f.src.length - 15, f.src.length) == "images/favs.png"){
         f.src = "images/faved.png";
         var z = document.getElementById(exp).getElementsByTagName('img');
         document.getElementById("myCollectionContent").innerHTML += '<div class="experiencecell" id="c'+ exp + '><img src="'+z[0].src+'">' + document.getElementById(exp).innerHTML + '</div>';
         //document.getElementById(exp).innerHTML += '<img src="images/faved.png" style="width: 13%; display: none;" title="Delete from favourites">';
-    }
-    else{
+    }else{
         f.src = "images/favs.png";
         var collections = document.getElementById("myCollectionContent").getElementsByClassName("experiencecell");
         
         for (var l = 0; l < collections.length;l++){
-            alert((collections[l].id).substring(1, 10));
-            alert(exp);
             if ((collections[l].id).substring(1, 10) == exp){
                 collections[l].remove();
 
@@ -273,13 +411,22 @@ function favourite(f){
 }
 
 function like(el) {
+    if(el.parentElement.parentElement.style.backgroundColor =="darkslategray"){
+        el.parentElement.parentElement.style.backgroundColor = "black"
+    }else{
+        el.parentElement.parentElement.style.backgroundColor = "darkslategray"
+    }
+    
+}
+
+function likeComment(el){
     if(el.parentElement.style.backgroundColor =="darkslategray"){
         el.parentElement.style.backgroundColor = "black"
     }else{
         el.parentElement.style.backgroundColor = "darkslategray"
     }
-    
 }
+
 function popup(parent) {
     var popup = document.getElementById("myPopupShare")
     popup.style.display = "block"
@@ -510,6 +657,24 @@ function addExperience(){
 }
 function deleteExperience(el) {
     var x = confirm("Are you sure you want to delete?");
-    if (x)
+    if (x){
         el.parentNode.parentNode.style.display = 'none';
+    }
+}
+
+function deleteComment(el) {
+    var x = confirm("Are you sure you want to delete?");
+    if (x){
+        el.parentNode.style.display = 'none';
+    }
+}
+
+function addComment(){
+    const commentText = document.getElementById("newComment").value
+    const commentsContainer = document.getElementById("allComments")
+
+    var html= 
+    "<div class = 'comment'> "
+    + "<h1 class='description'>" + commentText + "</h1><button type='button' onclick=deleteComment(this)>Delete</button><button type='button' onclick=likeComment(this)>Like</button>"
+    $(html).insertAfter('#allComments');
 }
